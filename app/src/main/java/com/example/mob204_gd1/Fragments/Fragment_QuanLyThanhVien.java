@@ -8,12 +8,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.mob204_gd1.Adapter.SachAdapter;
 import com.example.mob204_gd1.Adapter.ThanhVienAdapter;
 import com.example.mob204_gd1.Model.Sach;
 import com.example.mob204_gd1.Model.ThanhVien;
 import com.example.mob204_gd1.R;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +25,7 @@ public class Fragment_QuanLyThanhVien extends Fragment {
     ListView lv;
     ThanhVienAdapter adapter;
     List<ThanhVien> list;
-
+    FloatingActionButton fab;
 
     public Fragment_QuanLyThanhVien() {
         // Required empty public constructor
@@ -35,6 +37,8 @@ public class Fragment_QuanLyThanhVien extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment__quan_ly_thanh_vien, container, false);
 
+        // anh xa floating action button
+        fab = view.findViewById(R.id.fab_themThanhVien);
         // anh xa listview
         lv = view.findViewById(R.id.lv_quanlythanhvien);
 
@@ -56,6 +60,14 @@ public class Fragment_QuanLyThanhVien extends Fragment {
 
         // set adapter cho listview
         lv.setAdapter(adapter);
+
+        // set click cho fab
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(), "Them Thanh vien moi", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         return view;
     }

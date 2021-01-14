@@ -8,12 +8,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.mob204_gd1.Adapter.PhieuMuonAdapter;
 import com.example.mob204_gd1.Adapter.SachAdapter;
 import com.example.mob204_gd1.Model.PhieuMuon;
 import com.example.mob204_gd1.Model.Sach;
 import com.example.mob204_gd1.R;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +25,7 @@ public class Fragment_QuanLyPhieuMuon extends Fragment {
     ListView lv;
     PhieuMuonAdapter adapter;
     List<PhieuMuon> list;
+    FloatingActionButton fab;
 
     public Fragment_QuanLyPhieuMuon() {
         // Required empty public constructor
@@ -33,6 +36,8 @@ public class Fragment_QuanLyPhieuMuon extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment__quan_ly_phieu_muon, container, false);
 
+        // anh xa floating action button
+        fab = view.findViewById(R.id.fab_themPhieuMuon);
         // anh xa listview
         lv = view.findViewById(R.id.lv_quanlyphieumuon);
 
@@ -49,6 +54,14 @@ public class Fragment_QuanLyPhieuMuon extends Fragment {
 
         // set adapter cho listview
         lv.setAdapter(adapter);
+
+        // set click cho fab
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(), "Them phieu muon moi", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         return view;
     }
