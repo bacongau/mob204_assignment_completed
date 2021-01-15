@@ -21,7 +21,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout4"
+        android:id="@+id/edt_login_tenDangNhap"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -32,14 +32,14 @@
         app:layout_constraintTop_toBottomOf="@+id/textView11">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edt_login_tenDangNhap"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Ten dang nhap" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout5"
+        app:passwordToggleEnabled="true"
+        android:id="@+id/edt_login_matKhau"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -47,12 +47,12 @@
         android:layout_marginEnd="32dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout4">
+        app:layout_constraintTop_toBottomOf="@+id/edt_login_tenDangNhap">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edt_login_matKhau"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="textPassword"
             android:hint="Mat khau" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -62,8 +62,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="Luu mat khau"
-        app:layout_constraintStart_toStartOf="@+id/textInputLayout5"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout5" />
+        app:layout_constraintStart_toStartOf="@+id/edt_login_matKhau"
+        app:layout_constraintTop_toBottomOf="@+id/edt_login_matKhau" />
 
     <Button
         android:id="@+id/button_login_huy"

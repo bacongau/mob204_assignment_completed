@@ -8,33 +8,38 @@
 
 
     <TextView
-        android:id="@+id/textView12"
+        android:id="@+id/textView14"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="Them sach"
-        android:textStyle="bold"
+        android:text="Them Thanh Vien"
         android:textColor="@color/black"
         android:textSize="25dp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Spinner
-        android:id="@+id/spinner_dialogThemSach_chonLoaiSach"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/edt_dialogThemTv_ten"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="16dp"
-        android:spinnerMode="dialog"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView12" />
+        app:layout_constraintTop_toBottomOf="@+id/textView14">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nhap ten thanh vien" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/edt_dialogThemSach_tensach"
+        android:id="@+id/edt_dialogThemTv_namsinh"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -42,33 +47,33 @@
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner_dialogThemSach_chonLoaiSach">
+        app:layout_constraintTop_toBottomOf="@+id/edt_dialogThemTv_ten">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Nhap ten sach" />
+            android:hint="Nhap nam sinh" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/button_dialogThemSach_luu"
+        android:id="@+id/button_dialogThemTv_luu"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="8dp"
         android:text="Luu"
-        app:layout_constraintEnd_toStartOf="@+id/button_dialogThemSach_huy"
-        app:layout_constraintStart_toStartOf="@+id/edt_dialogThemSach_tensach"
-        app:layout_constraintTop_toBottomOf="@+id/edt_dialogThemSach_tensach" />
+        app:layout_constraintEnd_toStartOf="@+id/button_dialogThemTv_huy"
+        app:layout_constraintStart_toStartOf="@+id/edt_dialogThemTv_namsinh"
+        app:layout_constraintTop_toBottomOf="@+id/edt_dialogThemTv_namsinh" />
 
     <Button
-        android:id="@+id/button_dialogThemSach_huy"
+        android:id="@+id/button_dialogThemTv_huy"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="24dp"
         android:text="Huy"
-        app:layout_constraintEnd_toEndOf="@+id/edt_dialogThemSach_tensach"
-        app:layout_constraintStart_toEndOf="@+id/button_dialogThemSach_luu"
-        app:layout_constraintTop_toBottomOf="@+id/edt_dialogThemSach_tensach" />
+        app:layout_constraintEnd_toEndOf="@+id/edt_dialogThemTv_namsinh"
+        app:layout_constraintStart_toEndOf="@+id/button_dialogThemTv_luu"
+        app:layout_constraintTop_toBottomOf="@+id/edt_dialogThemTv_namsinh" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -21,7 +21,7 @@
             android:text="Huy"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/button_luuMatKhauMoi"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayout3" />
+            app:layout_constraintTop_toBottomOf="@+id/edt_matKhauMoi2" />
 
         <TextView
             android:id="@+id/textView6"
@@ -37,7 +37,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputLayout"
+            android:id="@+id/edt_matKhauCu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
@@ -48,14 +48,14 @@
             app:layout_constraintTop_toBottomOf="@+id/textView6">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edt_matKhauCu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Mat khau cu" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputLayout2"
+            app:passwordToggleEnabled="true"
+            android:id="@+id/edt_matKhauMoi1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
@@ -63,17 +63,18 @@
             android:layout_marginEnd="32dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
+            app:layout_constraintTop_toBottomOf="@+id/edt_matKhauCu">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edt_matKhauMoi1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="textPassword"
                 android:hint="Mat khau moi" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputLayout3"
+            app:passwordToggleEnabled="true"
+            android:id="@+id/edt_matKhauMoi2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
@@ -81,12 +82,12 @@
             android:layout_marginEnd="32dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayout2">
+            app:layout_constraintTop_toBottomOf="@+id/edt_matKhauMoi1">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edt_matKhauMoi2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="textPassword"
                 android:hint="Nhap lai mat khau moi" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -100,6 +101,6 @@
             android:text="Luu"
             app:layout_constraintEnd_toStartOf="@+id/button_huyLuuMatKhauMoi"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayout3" />
+            app:layout_constraintTop_toBottomOf="@+id/edt_matKhauMoi2" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
