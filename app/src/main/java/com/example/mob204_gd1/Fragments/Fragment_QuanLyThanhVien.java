@@ -1,5 +1,6 @@
 package com.example.mob204_gd1.Fragments;
 
+import android.app.Dialog;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -65,7 +67,26 @@ public class Fragment_QuanLyThanhVien extends Fragment {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(), "Them Thanh vien moi", Toast.LENGTH_SHORT).show();
+                Dialog dialog = new Dialog(getContext());
+                dialog.setContentView(R.layout.dialog_them_thanh_vien);
+
+                Button button_luu = dialog.findViewById(R.id.button_dialogThemTv_luu);
+                button_luu.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                    }
+                });
+
+                Button button_huy = dialog.findViewById(R.id.button_dialogThemTv_huy);
+                button_huy.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.cancel();
+                    }
+                });
+
+                dialog.show();
             }
         });
 

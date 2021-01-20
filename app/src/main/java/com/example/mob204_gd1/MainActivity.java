@@ -14,10 +14,12 @@ import android.os.PersistableBundle;
 import android.view.MenuItem;
 
 import com.example.mob204_gd1.Fragments.Fragment_DoanhThu;
+import com.example.mob204_gd1.Fragments.Fragment_DoiMatKhau;
 import com.example.mob204_gd1.Fragments.Fragment_QuanLyLoaiSach;
 import com.example.mob204_gd1.Fragments.Fragment_QuanLyPhieuMuon;
 import com.example.mob204_gd1.Fragments.Fragment_QuanLySach;
 import com.example.mob204_gd1.Fragments.Fragment_QuanLyThanhVien;
+import com.example.mob204_gd1.Fragments.Fragment_ThemNguoiDung;
 import com.example.mob204_gd1.Fragments.Fragment_top10;
 import com.google.android.material.navigation.NavigationView;
 
@@ -100,6 +102,12 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.nav_doanhthu:
                 fragmentClass = Fragment_DoanhThu.class;
+                break;
+            case R.id.nav_themnguoidung:
+                fragmentClass = Fragment_ThemNguoiDung.class;
+                break;
+            case R.id.nav_doimatkhau:
+                fragmentClass = Fragment_DoiMatKhau.class;
                 break;
             case R.id.nav_dangxuat:
                 finish();
