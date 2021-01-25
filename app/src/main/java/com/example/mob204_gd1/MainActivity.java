@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.PersistableBundle;
@@ -110,6 +111,8 @@ public class MainActivity extends AppCompatActivity {
                 fragmentClass = Fragment_DoiMatKhau.class;
                 break;
             case R.id.nav_dangxuat:
+                Intent intent = new Intent(this,LoginScreen.class);
+                startActivity(intent);
                 finish();
 
             default:

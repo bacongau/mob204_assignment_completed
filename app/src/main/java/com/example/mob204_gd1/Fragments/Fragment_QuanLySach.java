@@ -46,16 +46,7 @@ public class Fragment_QuanLySach extends Fragment {
 
         // khoi tao list va do du lieu vao
         list = new ArrayList<>();
-        list.add(new Sach(1,"De men phieu luu ky",1500, 1));
-        list.add(new Sach(2,"Bo gia",1000, 1));
-        list.add(new Sach(3,"Su im lang cua bay cuu",2000, 1));
-        list.add(new Sach(4,"Java 1",4000, 2));
-        list.add(new Sach(5,"Java 2",5000, 2));
-        list.add(new Sach(6,"Marketing",3000, 3));
-        list.add(new Sach(7,"Kinh te hoc",6000, 3));
-        list.add(new Sach(8,"1000 cau hoi vi sao",2500, 4));
-        list.add(new Sach(9,"Ban khong thong minh lam dau",3500, 4));
-        list.add(new Sach(10,"Khong co cau hoi nao ngo ngan",4000, 4));
+
 
         // Khoi tao adapter
         adapter = new SachAdapter(getContext(),R.layout.item_sach,list);

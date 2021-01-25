@@ -8,11 +8,11 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/textView16"
+        android:id="@+id/textView17"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="Them Thu Thu"
+        android:text="Thong tin Thu Thu"
         android:textColor="@color/black"
         android:textSize="25dp"
         android:textStyle="bold"
@@ -22,7 +22,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout"
+        android:id="@+id/textInputLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -30,17 +30,17 @@
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView16">
+        app:layout_constraintTop_toBottomOf="@+id/textView17">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edt_dialogThemTT_maTT"
+            android:id="@+id/edt_dialogThongTinTT_maTT"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Nhap ten dang nhap" />
+            android:hint="Ma thu thu" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout4"
+        android:id="@+id/textInputLayout3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -48,38 +48,17 @@
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout2">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edt_dialog_tenThuThu"
+            android:id="@+id/edt_dialogThongTinTT_hoTenTT"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Nhap ho ten" />
+            android:hint="Ho ten" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        app:passwordToggleEnabled="true"
-        android:id="@+id/edittext9"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout4">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edt_dialogThemTT_matKhau1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textPassword"
-            android:hint="Nhap mat khau" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        app:passwordToggleEnabled="true"
-        android:id="@+id/edittext10"
+        android:id="@+id/textInputLayout6"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -87,40 +66,48 @@
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edittext9">
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout3">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edt_dialogThemTT_matKhau2"
+            android:id="@+id/edt_dialogThongTinTT_matKhau"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPassword"
-            android:hint="Xac nhan mat khau" />
+            android:hint="Mat khau" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/button_dialogThemTT_luu"
+        android:id="@+id/button_dialogThongTinTT_capnhat"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="32dp"
-        android:text="Luu"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/button_dialogThemTT_huy"
-        app:layout_constraintStart_toStartOf="@+id/edittext10"
-        app:layout_constraintTop_toBottomOf="@+id/edittext10" />
+        android:text="Cap nhat"
+        app:layout_constraintEnd_toStartOf="@+id/button_dialogThongTinTT_huy"
+        app:layout_constraintStart_toStartOf="@+id/textInputLayout6"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout6" />
 
     <Button
-        android:id="@+id/button_dialogThemTT_huy"
+        android:id="@+id/button_dialogThongTinTT_huy"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginTop="32dp"
         android:text="Huy"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/edittext10"
-        app:layout_constraintStart_toEndOf="@+id/button_dialogThemTT_luu"
-        app:layout_constraintTop_toBottomOf="@+id/edittext10" />
+        app:layout_constraintEnd_toEndOf="@+id/textInputLayout6"
+        app:layout_constraintStart_toEndOf="@+id/button_dialogThongTinTT_capnhat"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout6" />
 
+    <Button
+        android:id="@+id/button_dialogThongTinTT_xoa"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="32dp"
+        android:text="Xoa"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/button_dialogThongTinTT_huy"
+        app:layout_constraintStart_toStartOf="@+id/button_dialogThongTinTT_capnhat"
+        app:layout_constraintTop_toBottomOf="@+id/button_dialogThongTinTT_capnhat" />
 </androidx.constraintlayout.widget.ConstraintLayout>

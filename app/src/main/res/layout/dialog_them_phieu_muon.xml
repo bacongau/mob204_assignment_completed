@@ -55,7 +55,7 @@
         app:layout_constraintTop_toBottomOf="@+id/spinner_dialogThemPhieuMuon_ChonLoaiSach" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/edt_dialogThemPhieuMuon_chonNgayTra"
+        android:id="@+id/textinput4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -66,6 +66,7 @@
         app:layout_constraintTop_toBottomOf="@+id/spinner_dialogThemPhieuMuon_ChonSach">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edt_dialogThemPhieuMuon_chonNgayTra"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Chon ngay tra sach" />
@@ -81,8 +82,8 @@
         android:text="Luu"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/button_dialogThemPhieuMuon_huy"
-        app:layout_constraintStart_toStartOf="@+id/edt_dialogThemPhieuMuon_chonNgayTra"
-        app:layout_constraintTop_toBottomOf="@+id/edt_dialogThemPhieuMuon_chonNgayTra" />
+        app:layout_constraintStart_toStartOf="@+id/textinput4"
+        app:layout_constraintTop_toBottomOf="@+id/textinput4" />
 
     <Button
         android:id="@+id/button_dialogThemPhieuMuon_huy"
@@ -93,7 +94,7 @@
         android:layout_marginBottom="32dp"
         android:text="Huy"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/edt_dialogThemPhieuMuon_chonNgayTra"
+        app:layout_constraintEnd_toEndOf="@+id/textinput4"
         app:layout_constraintStart_toEndOf="@+id/button_dialogThemPhieuMuon_luu"
-        app:layout_constraintTop_toBottomOf="@+id/edt_dialogThemPhieuMuon_chonNgayTra" />
+        app:layout_constraintTop_toBottomOf="@+id/textinput4" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,6 +7,7 @@
     android:layout_height="match_parent">
 
     <TextView
+        android:gravity="center"
         android:id="@+id/textView_idThuThu"
         android:layout_width="70dp"
         android:layout_height="wrap_content"
@@ -19,6 +20,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:gravity="center"
         android:id="@+id/textView_hoTenThuThu"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -35,13 +37,25 @@
 
     <TextView
         android:id="@+id/textView_matKhau"
-        android:layout_width="80dp"
+        android:layout_width="90dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="40dp"
+        android:gravity="center"
         android:text="mat khau"
-        android:textSize="20dp"
         android:textColor="@color/black"
+        android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView_edit_thuthu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView_matKhau"
+        app:layout_constraintStart_toEndOf="@+id/textView_matKhau"
+        app:layout_constraintTop_toTopOf="@+id/textView_matKhau"
+        app:srcCompat="@drawable/ic_edit" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

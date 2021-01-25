@@ -22,7 +22,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/edt_dialog_tenLoaiSach"
+        android:id="@+id/textinput3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -33,6 +33,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView13">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edt_dialog_tenLoaiSach"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Nhap ten loai sach" />
@@ -48,8 +49,8 @@
         android:text="Luu"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/button_dialogThemLoaiSach_huy"
-        app:layout_constraintStart_toStartOf="@+id/edt_dialog_tenLoaiSach"
-        app:layout_constraintTop_toBottomOf="@+id/edt_dialog_tenLoaiSach" />
+        app:layout_constraintStart_toStartOf="@+id/textinput3"
+        app:layout_constraintTop_toBottomOf="@+id/textinput3" />
 
     <Button
         android:id="@+id/button_dialogThemLoaiSach_huy"
@@ -60,7 +61,7 @@
         android:layout_marginBottom="32dp"
         android:text="Huy"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/edt_dialog_tenLoaiSach"
+        app:layout_constraintEnd_toEndOf="@+id/textinput3"
         app:layout_constraintStart_toEndOf="@+id/button_dialogThemLoaiSach_luu"
-        app:layout_constraintTop_toBottomOf="@+id/edt_dialog_tenLoaiSach" />
+        app:layout_constraintTop_toBottomOf="@+id/textinput3" />
 </androidx.constraintlayout.widget.ConstraintLayout>

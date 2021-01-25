@@ -7,13 +7,12 @@
     android:layout_gravity="center"
     android:layout_height="match_parent">
 
-
     <TextView
-        android:id="@+id/textView14"
+        android:id="@+id/textView22"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="Them Thanh Vien"
+        android:text="Thong tin Thanh vien"
         android:textColor="@color/black"
         android:textSize="25dp"
         android:textStyle="bold"
@@ -23,25 +22,25 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textinput7"
+        android:id="@+id/textInputLayout5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView14">
+        app:layout_constraintTop_toBottomOf="@+id/textView22">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edt_dialogThemTv_ten"
+            android:id="@+id/edt_dialogThongTinTV_tenTV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Nhap ten thanh vien" />
+            android:hint="Ten thanh vien" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textinput8"
+        android:id="@+id/textInputLayout7"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -49,38 +48,48 @@
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textinput7">
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout5">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edt_dialogThemTv_namsinh"
+            android:id="@+id/edt_dialogThongTinTV_NamSinh"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Nhap nam sinh" />
+            android:hint="Nam sinh" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/button_dialogThemTv_luu"
+        android:id="@+id/button_dialogThongTinTV_capnhat"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="32dp"
-        android:text="Luu"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/button_dialogThemTv_huy"
-        app:layout_constraintStart_toStartOf="@+id/textinput8"
-        app:layout_constraintTop_toBottomOf="@+id/textinput8" />
+        android:text="Cap nhat"
+        app:layout_constraintEnd_toStartOf="@+id/button_dialogThongTinTV_huy"
+        app:layout_constraintStart_toStartOf="@+id/textInputLayout7"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout7" />
 
     <Button
-        android:id="@+id/button_dialogThemTv_huy"
+        android:id="@+id/button_dialogThongTinTV_huy"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginTop="32dp"
         android:text="Huy"
+        app:layout_constraintEnd_toEndOf="@+id/textInputLayout7"
+        app:layout_constraintStart_toEndOf="@+id/button_dialogThongTinTV_capnhat"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout7" />
+
+    <Button
+        android:id="@+id/button_dialogThongTinTV_xoa"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="32dp"
+        android:text="Xoa"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/textinput8"
-        app:layout_constraintStart_toEndOf="@+id/button_dialogThemTv_luu"
-        app:layout_constraintTop_toBottomOf="@+id/textinput8" />
+        app:layout_constraintEnd_toEndOf="@+id/button_dialogThongTinTV_huy"
+        app:layout_constraintStart_toStartOf="@+id/button_dialogThongTinTV_capnhat"
+        app:layout_constraintTop_toBottomOf="@+id/button_dialogThongTinTV_capnhat" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -13,7 +13,7 @@ public class LoadingScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loading_screen);
 
-        CountDownTimer countDownTimer = new CountDownTimer(1000,3000) {
+        CountDownTimer countDownTimer = new CountDownTimer(2000,1000) {
             @Override
             public void onTick(long millisUntilFinished) {
 
@@ -23,7 +23,10 @@ public class LoadingScreen extends AppCompatActivity {
             public void onFinish() {
                 Intent intent = new Intent(LoadingScreen.this,LoginScreen.class);
                 startActivity(intent);
+                finish();
             }
         };
+
+        countDownTimer.start();
     }
 }

@@ -14,7 +14,6 @@ import java.util.List;
 
 public class SachDAO {
 
-
     private SQLiteDatabase db;
 
     public SachDAO(Context context) {
