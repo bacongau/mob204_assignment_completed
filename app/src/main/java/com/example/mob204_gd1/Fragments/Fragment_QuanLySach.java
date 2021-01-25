@@ -73,7 +73,6 @@ public class Fragment_QuanLySach extends Fragment {
         // set adapter cho listview
         lv.setAdapter(sachAdapter);
 
-
         // set click lv
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -118,7 +117,6 @@ public class Fragment_QuanLySach extends Fragment {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position1, long id) {
                         maLoaiSachDuocChon = loaiSachList.get(position1).getId();
-                        Log.e("aaa",maLoaiSachDuocChon+"");
                     }
 
                     @Override
@@ -141,7 +139,6 @@ public class Fragment_QuanLySach extends Fragment {
                         sach.setTenSach(edt_tensach.getText().toString());
                         sach.setGiaThue(Integer.parseInt(edt_giathue.getText().toString()));
                         sach.setMaLoai(maLoaiSachDuocChon);
-                        Log.e("bbb",maLoaiSachDuocChon+"");
 
                         // kiem tra va cap nhat
                         if (edt_tensach.getText().length() == 0 || edt_giathue.getText().length() == 0){
@@ -206,11 +203,11 @@ public class Fragment_QuanLySach extends Fragment {
                 // tao list va lay du lieu loai sach
                 loaiSachList = new ArrayList<>();
                 loaiSachList = loaiSachDAO.getAllData();
-
                 // khoi tao adapter
                 LoaiSachAdapter loaiSachAdapter = new LoaiSachAdapter(getContext(),R.layout.item_loaisach,loaiSachList);
                 // set Adapter
                 spinner.setAdapter(loaiSachAdapter);
+
                 // set click
                 spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override

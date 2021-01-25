@@ -21,50 +21,50 @@ public class SachDAO {
         db = dbHelper.getWritableDatabase();
     }
 
-    public long insert(Sach obj){
+    public long insert(Sach obj) {
 
         ContentValues values = new ContentValues();
-        values.put("tenSach",obj.getTenSach());
-        values.put("giaThue",obj.getGiaThue());
-        values.put("maLoai",obj.getMaLoai());
+        values.put("tenSach", obj.getTenSach());
+        values.put("giaThue", obj.getGiaThue());
+        values.put("maLoai", obj.getMaLoai());
 
-        return db.insert("Sach",null,values);
+        return db.insert("Sach", null, values);
     }
 
-    public int update(Sach obj){
+    public int update(Sach obj) {
 
         ContentValues values = new ContentValues();
-        values.put("tenSach",obj.getTenSach());
-        values.put("giaThue",obj.getGiaThue());
-        values.put("maLoai",obj.getMaLoai());
+        values.put("tenSach", obj.getTenSach());
+        values.put("giaThue", obj.getGiaThue());
+        values.put("maLoai", obj.getMaLoai());
 
-        return db.update("Sach",values,"maSach=?",new String[]{
+        return db.update("Sach", values, "maSach=?", new String[]{
                 String.valueOf(obj.getId())
         });
     }
 
-    public int delete(String id){
-        return db.delete("Sach","maSach=?",new String[]{id});
+    public int delete(String id) {
+        return db.delete("Sach", "maSach=?", new String[]{id});
     }
 
     // get all data
-    public List<Sach> getAllData(){
+    public List<Sach> getAllData() {
         String sql = "SELECT * FROM Sach";
         return getData(sql);
     }
 
     // get data theo id
-    public Sach getId(String id){
+    public Sach getId(String id) {
         String sql = "SELECT * FROM Sach WHERE maSach=?";
-        List<Sach> list = getData(sql,id);
+        List<Sach> list = getData(sql, id);
         return list.get(0);
     }
 
     // get data voi cac tham so
-    private List<Sach> getData(String sql, String...selectionArgs){
+    private List<Sach> getData(String sql, String... selectionArgs) {
         List<Sach> list = new ArrayList<>();
-        Cursor cursor = db.rawQuery(sql,selectionArgs);
-        while (cursor.moveToNext()){
+        Cursor cursor = db.rawQuery(sql, selectionArgs);
+        while (cursor.moveToNext()) {
             Sach obj = new Sach();
             obj.setId(Integer.parseInt(cursor.getString(cursor.getColumnIndex("maSach"))));
             obj.setGiaThue(Integer.parseInt(cursor.getString(cursor.getColumnIndex("giaThue"))));
