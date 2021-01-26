@@ -1,7 +1,9 @@
 package com.example.mob204_gd1.Fragments;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -12,10 +14,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.Switch;
 import android.widget.Toast;
 
 import com.example.mob204_gd1.Adapter.LoaiSachAdapter;
@@ -59,9 +63,11 @@ public class Fragment_QuanLyPhieuMuon extends Fragment {
     ThanhVienDAO thanhVienDAO;
 
     EditText edt_ngayTra;
-    Spinner spinner_chonSach,spinner_chonThanhVien;
+    Spinner spinner_chonSach, spinner_chonThanhVien;
 
-    int maThanhVienDuocChon,maSachDuocChon,indexSach;
+    int maThanhVienDuocChon, maSachDuocChon, indexSach;
+    int check = 1;
+    int check2 = 1;
 
     public Fragment_QuanLyPhieuMuon() {
         // Required empty public constructor
@@ -92,10 +98,198 @@ public class Fragment_QuanLyPhieuMuon extends Fragment {
         loaiSachList = loaiSachDAO.getAllData();
 
         // Khoi tao adapter
-        phieuMuonAdapter = new PhieuMuonAdapter(getContext(),R.layout.item_phieumuon,phieuMuonList);
+        phieuMuonAdapter = new PhieuMuonAdapter(getContext(), R.layout.item_phieumuon, phieuMuonList);
 
         // set adapter cho listview
         lv.setAdapter(phieuMuonAdapter);
+
+        // set click lv
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                // khoi tao dialog
+                Dialog dialog = new Dialog(getContext());
+                dialog.setContentView(R.layout.dialog_thongtin_phieumuon);
+
+                // anh xa view
+                Spinner spinner_thongtin_chonthanhvien = dialog.findViewById(R.id.spinner_dialog_thongtin_phieumuon_chonThanhVien);
+                Spinner spinner_thongtin_chonsach = dialog.findViewById(R.id.spinner_dialog_thongtin_phieumuon_chonSach);
+                EditText edt_thongtin_tenthanhvien = dialog.findViewById(R.id.edt_dialog_thongtin_phieumuon_tenThanhvien);
+                EditText edt_thongtin_tensach = dialog.findViewById(R.id.edt_dialog_thongtin_phieumuon_tenSach);
+                EditText edt_thongtin_ngaytra = dialog.findViewById(R.id.edt_dialog_thongtin_phieumuon_ngayTra);
+                Button button_capNhat = dialog.findViewById(R.id.button_dialog_thongtin_phieumuon_capnhat);
+                Button button_huy = dialog.findViewById(R.id.button_dialog_thongtin_phieumuon_huy);
+                Button button_xoa = dialog.findViewById(R.id.button_dialog_thongtin_phieumuon_xoa);
+                Switch swich_trangthai = dialog.findViewById(R.id.switch_dialog_thongtin_phieumuon_chonTrangThaiTraSach);
+
+                // lay thong tin 1 item
+                PhieuMuon phieuMuon = phieuMuonList.get(position);
+
+                String maSachDangChon = String.valueOf(phieuMuon.getIdSach());
+                Sach sach = sachDAO.getId(maSachDangChon);
+                String maTvDangChon = String.valueOf(phieuMuon.getIdThanhVien());
+                ThanhVien thanhVien = thanhVienDAO.getId(maTvDangChon);
+                // set text cho edittext
+                edt_thongtin_tensach.setText(sach.getTenSach());
+                edt_thongtin_tenthanhvien.setText(thanhVien.getHoTen());
+                edt_thongtin_ngaytra.setText(phieuMuon.getNgay());
+
+                // setup spinner chon thanh vien
+                // tao list va lay thanh vien
+                thanhVienList = thanhVienDAO.getAllData();
+                // khoi tao adapter
+                ThanhVienAdapter thanhVienAdapter = new ThanhVienAdapter(getContext(), R.layout.item_thanhvien, thanhVienList);
+                // set Adapter
+                spinner_thongtin_chonthanhvien.setAdapter(thanhVienAdapter);
+
+                // set click
+                spinner_thongtin_chonthanhvien.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position1, long id) {
+                        maThanhVienDuocChon = thanhVienList.get(position1).getMaThanhVien();
+                        if (check == 2) {
+                            edt_thongtin_tenthanhvien.setText(thanhVienList.get(position1).getHoTen());
+                        }
+                        if (check == 1) {
+                            check++;
+                        }
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
+
+                    }
+                });
+
+                // setup spinner chon sach
+                // tao list va lay du lieu sach
+                sachList = sachDAO.getAllData();
+                // khoi tao adapter
+                SachSpinnerAdapter sachSpinnerAdapter = new SachSpinnerAdapter(getContext(), R.layout.item_spinner_sach, sachList);
+                // set Adapter
+                spinner_thongtin_chonsach.setAdapter(sachSpinnerAdapter);
+                // set click
+                spinner_thongtin_chonsach.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position1, long id) {
+                        maSachDuocChon = phieuMuonList.get(position).getIdSach();
+                        indexSach = position1;
+                        if (check2 == 2) {
+                            edt_thongtin_tensach.setText(sachList.get(position1).getTenSach());
+                        }
+                        if (check2 == 1) {
+                            check2++;
+                        }
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
+
+                    }
+                });
+
+                //set chon ngay moi
+                Calendar calendar = Calendar.getInstance();
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
+                int thisYear = calendar.get(Calendar.YEAR);
+                int thisMonth = calendar.get(Calendar.MONTH);
+                int thisDay = calendar.get(Calendar.DAY_OF_MONTH);
+                edt_thongtin_ngaytra.setText(simpleDateFormat.format(phieuMuon.getNgay()));
+                edt_thongtin_ngaytra.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(), new DatePickerDialog.OnDateSetListener() {
+                            @Override
+                            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                                calendar.set(year, month, dayOfMonth);
+                                edt_ngayTra.setText(simpleDateFormat.format(calendar.getTime()));
+                            }
+                        }, thisYear, thisMonth, thisDay);
+                        datePickerDialog.show();
+                    }
+                });
+
+
+                button_huy.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                    }
+                });
+
+                button_capNhat.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        // gan thong tin moi object
+                        phieuMuon.setIdThanhVien(maThanhVienDuocChon);
+                        phieuMuon.setIdSach(maSachDuocChon);
+                        phieuMuon.setIdThuThu("admin");
+                        phieuMuon.setNgay(simpleDateFormat.format(edt_thongtin_ngaytra.getText().toString()));
+
+                        swich_trangthai.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                            @Override
+                            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                                if (isChecked) {
+                                    phieuMuon.setTraSach(0);
+                                } else {
+                                    phieuMuon.setTraSach(1);
+                                }
+                            }
+                        });
+
+                        // tinh tien thue = so ngay thue * gia thue
+                        Calendar calendar2 = Calendar.getInstance();
+                        int soNgayThue = (int) ((calendar.getTimeInMillis() - calendar2.getTimeInMillis()) / (1000 * 60 * 60 * 24));
+                        int giaThue = sachList.get(indexSach).getGiaThue();
+                        int soTienThue = soNgayThue * giaThue;
+                        phieuMuon.setTienThue(soTienThue);
+
+                        // kiem tra va cap nhat
+                        if (edt_thongtin_tensach.getText().length() == 0 || edt_thongtin_tenthanhvien.getText().length() == 0 || edt_thongtin_ngaytra.getText().length() == 0) {
+                            Toast.makeText(getContext(), "Khong duoc de trong thong tin", Toast.LENGTH_SHORT).show();
+                        } else {
+                            if (phieuMuonDAO.update(phieuMuon) > 0) {
+                                Toast.makeText(getContext(), "Cap nhat thanh cong", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(getContext(), "Error", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+
+                        CapNhatListView();
+                        dialog.dismiss();
+
+                    }
+                });
+
+                button_xoa.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                        builder.setTitle("Xoa Loai sach");
+                        builder.setMessage("Ban chac chan muon xoa");
+                        builder.setPositiveButton("Xoa", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog1, int which) {
+                                if (phieuMuonDAO.delete(String.valueOf(phieuMuon.getId())) > 0) {
+                                    Toast.makeText(getContext(), "Xoa thanh cong", Toast.LENGTH_SHORT).show();
+                                    CapNhatListView();
+                                    dialog.dismiss();
+                                } else {
+                                    Toast.makeText(getContext(), "Error", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
+
+                        builder.setNegativeButton("Huy", null);
+                        AlertDialog alertDialog = builder.create();
+                        builder.show();
+
+                    }
+                });
+
+                dialog.show();
+            }
+        });
 
         // set click cho fab
         fab.setOnClickListener(new View.OnClickListener() {
@@ -113,7 +307,7 @@ public class Fragment_QuanLyPhieuMuon extends Fragment {
                 // tao list va lay thanh vien
                 thanhVienList = thanhVienDAO.getAllData();
                 // khoi tao adapter
-                ThanhVienAdapter thanhVienAdapter = new ThanhVienAdapter(getContext(),R.layout.item_thanhvien,thanhVienList);
+                ThanhVienAdapter thanhVienAdapter = new ThanhVienAdapter(getContext(), R.layout.item_thanhvien, thanhVienList);
                 // set Adapter
                 spinner_chonThanhVien.setAdapter(thanhVienAdapter);
 
@@ -134,7 +328,7 @@ public class Fragment_QuanLyPhieuMuon extends Fragment {
                 // tao list va lay du lieu sach
                 sachList = sachDAO.getAllData();
                 // khoi tao adapter
-                SachSpinnerAdapter sachSpinnerAdapter = new SachSpinnerAdapter(getContext(),R.layout.item_spinner_sach,sachList,loaiSachList);
+                SachSpinnerAdapter sachSpinnerAdapter = new SachSpinnerAdapter(getContext(), R.layout.item_spinner_sach, sachList);
                 // set Adapter
                 spinner_chonSach.setAdapter(sachSpinnerAdapter);
 
@@ -142,10 +336,7 @@ public class Fragment_QuanLyPhieuMuon extends Fragment {
                 spinner_chonSach.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                        maSachDuocChon = sachList.get(position).getId();
-                        indexSach = sachList.indexOf(sachList);
-                        Log.e("maSachDuocChon: ", maSachDuocChon + "");
-                        Log.e("indexSach: ", indexSach + "");
+                        indexSach = position;
                     }
 
                     @Override
@@ -166,10 +357,10 @@ public class Fragment_QuanLyPhieuMuon extends Fragment {
                         DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(), new DatePickerDialog.OnDateSetListener() {
                             @Override
                             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                                calendar.set(year,month,dayOfMonth);
+                                calendar.set(year, month, dayOfMonth);
                                 edt_ngayTra.setText(simpleDateFormat.format(calendar.getTime()));
                             }
-                        },thisYear,thisMonth,thisDay);
+                        }, thisYear, thisMonth, thisDay);
                         datePickerDialog.show();
 
                     }
@@ -190,20 +381,19 @@ public class Fragment_QuanLyPhieuMuon extends Fragment {
 
                         // tinh tien thue = so ngay thue * gia thue
                         Calendar calendar1 = Calendar.getInstance();
-                        int soNgayThue = (int) ((calendar.getTimeInMillis() - calendar1.getTimeInMillis()) / (1000*60*60*24));
-
-                        int soTienThue = soNgayThue * sachList.get(maSachDuocChon).getGiaThue();
-                        Log.e("aaaaa", "" + soTienThue);
-
+                        int soNgayThue = (int) ((calendar.getTimeInMillis() - calendar1.getTimeInMillis()) / (1000 * 60 * 60 * 24));
+                        int giaThue = sachList.get(indexSach).getGiaThue();
+                        int soTienThue = soNgayThue * giaThue;
                         phieuMuon.setTienThue(soTienThue);
+
                         phieuMuon.setTraSach(1);
 
-                        if (edt_ngayTra.getText().length() == 0){
+                        if (edt_ngayTra.getText().length() == 0) {
                             Toast.makeText(getContext(), "Khong duoc de trong thong tin", Toast.LENGTH_SHORT).show();
-                        }else {
-                            if (phieuMuonDAO.insert(phieuMuon) > 0){
+                        } else {
+                            if (phieuMuonDAO.insert(phieuMuon) > 0) {
                                 Toast.makeText(getContext(), "Them moi thanh cong", Toast.LENGTH_SHORT).show();
-                            }else {
+                            } else {
                                 Toast.makeText(getContext(), "Them moi that bai", Toast.LENGTH_SHORT).show();
                             }
                         }
@@ -229,12 +419,12 @@ public class Fragment_QuanLyPhieuMuon extends Fragment {
         return view;
     }
 
-    public void CapNhatListView(){
+    public void CapNhatListView() {
         // lay du lieu + do vao list
         phieuMuonList = phieuMuonDAO.getAllData();
 
         // Khoi tao adapter
-        phieuMuonAdapter = new PhieuMuonAdapter(getContext(),R.layout.item_phieumuon,phieuMuonList);
+        phieuMuonAdapter = new PhieuMuonAdapter(getContext(), R.layout.item_phieumuon, phieuMuonList);
 
         // set adapter cho listview
         lv.setAdapter(phieuMuonAdapter);

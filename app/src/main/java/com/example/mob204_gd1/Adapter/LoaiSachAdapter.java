@@ -48,7 +48,7 @@ public class LoaiSachAdapter extends BaseAdapter {
         if (convertView == null){
             holder = new ViewHolder();
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(R.layout.item_loaisach,null);
+            convertView = inflater.inflate(layout,null);
 
             holder.tv_maLoai = convertView.findViewById(R.id.textView_idLoaiSach);
             holder.tv_tenLoai = convertView.findViewById(R.id.textView_tenLoaiSach);

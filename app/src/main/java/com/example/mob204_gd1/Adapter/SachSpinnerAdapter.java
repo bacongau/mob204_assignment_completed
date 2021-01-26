@@ -22,13 +22,11 @@ public class SachSpinnerAdapter extends BaseAdapter {
     Context context;
     int layout;
     List<Sach> sachList;
-    List<LoaiSach> loaiSachList;
 
-    public SachSpinnerAdapter(Context context, int layout, List<Sach> sachList, List<LoaiSach> loaiSachList) {
+    public SachSpinnerAdapter(Context context, int layout, List<Sach> sachList) {
         this.context = context;
         this.layout = layout;
         this.sachList = sachList;
-        this.loaiSachList = loaiSachList;
     }
 
     @Override
@@ -47,7 +45,7 @@ public class SachSpinnerAdapter extends BaseAdapter {
     }
 
     public class ViewHolder{
-        TextView tv_idSach,tv_tenSach,tv_tenLoaiSach;
+        TextView tv_idSach,tv_tenSach;
     }
 
     @Override
@@ -60,7 +58,6 @@ public class SachSpinnerAdapter extends BaseAdapter {
 
             viewHolder.tv_idSach = convertView.findViewById(R.id.textView_spinner_maSach);
             viewHolder.tv_tenSach = convertView.findViewById(R.id.textView_spinner_tenSach);
-            viewHolder.tv_tenLoaiSach = convertView.findViewById(R.id.textView_spinner_tenLoaiSach);
 
             convertView.setTag(viewHolder);
         }else {
@@ -69,9 +66,6 @@ public class SachSpinnerAdapter extends BaseAdapter {
 
         viewHolder.tv_idSach.setText("" + sachList.get(position).getId());
         viewHolder.tv_tenSach.setText(sachList.get(position).getTenSach());
-        int a = sachList.get(position).getMaLoai();
-        int b = a-1;
-        viewHolder.tv_tenLoaiSach.setText(loaiSachList.get(b).getTenLoai());
 
         return convertView;
     }

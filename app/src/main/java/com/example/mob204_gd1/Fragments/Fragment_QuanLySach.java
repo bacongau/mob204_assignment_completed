@@ -36,12 +36,13 @@ public class Fragment_QuanLySach extends Fragment {
     SachAdapter sachAdapter;
     List<Sach> sachList;
     FloatingActionButton fab;
-    EditText edt_tenSach,edt_giaThue;
+    EditText edt_tenSach, edt_giaThue;
     Spinner spinner;
     int maLoaiSachDuocChon;
     List<LoaiSach> loaiSachList;
     LoaiSachDAO loaiSachDAO;
     SachDAO sachDAO;
+    int check = 1;
 
     public Fragment_QuanLySach() {
         // Required empty public constructor
@@ -68,7 +69,7 @@ public class Fragment_QuanLySach extends Fragment {
         loaiSachList = loaiSachDAO.getAllData();
 
         // Khoi tao adapter
-        sachAdapter = new SachAdapter(getContext(),R.layout.item_sach,sachList);
+        sachAdapter = new SachAdapter(getContext(), R.layout.item_sach, sachList);
 
         // set adapter cho listview
         lv.setAdapter(sachAdapter);
@@ -85,6 +86,7 @@ public class Fragment_QuanLySach extends Fragment {
                 Spinner spinner_chonloaisach = dialog.findViewById(R.id.spinner_dialog_thongtin_chonloaisach);
                 EditText edt_tensach = dialog.findViewById(R.id.edt_dialog_ThongTinSach_tenSach);
                 EditText edt_giathue = dialog.findViewById(R.id.edt_dialog_ThongTinSach_giaThue);
+                EditText edt_theloai = dialog.findViewById(R.id.edt_dialog_ThongTinSach_tenTheLoai);
                 Button button_capNhat = dialog.findViewById(R.id.button_dialog_ThongTinSach_capnhat);
                 Button button_huy = dialog.findViewById(R.id.button_dialog_ThongTinSach_huy);
                 Button button_xoa = dialog.findViewById(R.id.button_dialog_ThongTinSach_xoa);
@@ -92,9 +94,12 @@ public class Fragment_QuanLySach extends Fragment {
                 // lay thong tin 1 item
                 Sach sach = sachList.get(position);
 
+                String maLoaiSachDangChon = String.valueOf(sach.getMaLoai());
+                LoaiSach loaiSach = loaiSachDAO.getId(maLoaiSachDangChon);
                 // set text cho edittext
+                edt_theloai.setText(loaiSach.getTenLoai());
                 edt_tensach.setText(sach.getTenSach());
-                edt_giathue.setText(sach.getGiaThue()+"");
+                edt_giathue.setText(sach.getGiaThue() + "");
 
                 // setup spinner
                 // tao list va lay du lieu loai sach
@@ -102,21 +107,22 @@ public class Fragment_QuanLySach extends Fragment {
                 loaiSachList = loaiSachDAO.getAllData();
 
                 // khoi tao adapter
-                LoaiSachAdapter loaiSachAdapter = new LoaiSachAdapter(getContext(),R.layout.item_loaisach,loaiSachList);
+                LoaiSachAdapter loaiSachAdapter = new LoaiSachAdapter(getContext(), R.layout.item_loaisach, loaiSachList);
                 // set Adapter
                 spinner_chonloaisach.setAdapter(loaiSachAdapter);
-
-                // set selection spinner
-                int a = sachList.get(position).getMaLoai();
-                Log.e("a",a+"");
-                int b = a-1;
-                spinner_chonloaisach.setSelection(b);
 
                 // set click
                 spinner_chonloaisach.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position1, long id) {
                         maLoaiSachDuocChon = loaiSachList.get(position1).getId();
+                        if (check == 2) {
+                            edt_theloai.setText(loaiSachList.get(position1).getTenLoai());
+                        }
+                        if (check == 1) {
+                            check++;
+                        }
+
                     }
 
                     @Override
@@ -124,6 +130,7 @@ public class Fragment_QuanLySach extends Fragment {
 
                     }
                 });
+
 
                 button_huy.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -141,12 +148,12 @@ public class Fragment_QuanLySach extends Fragment {
                         sach.setMaLoai(maLoaiSachDuocChon);
 
                         // kiem tra va cap nhat
-                        if (edt_tensach.getText().length() == 0 || edt_giathue.getText().length() == 0){
+                        if (edt_tensach.getText().length() == 0 || edt_giathue.getText().length() == 0) {
                             Toast.makeText(getContext(), "Khong duoc de trong thong tin", Toast.LENGTH_SHORT).show();
-                        }else {
-                            if (sachDAO.update(sach) > 0){
+                        } else {
+                            if (sachDAO.update(sach) > 0) {
                                 Toast.makeText(getContext(), "Cap nhat thanh cong", Toast.LENGTH_SHORT).show();
-                            }else {
+                            } else {
                                 Toast.makeText(getContext(), "Error", Toast.LENGTH_SHORT).show();
                             }
                         }
@@ -166,17 +173,17 @@ public class Fragment_QuanLySach extends Fragment {
                         builder.setPositiveButton("Xoa", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog1, int which) {
-                                if (sachDAO.delete(String.valueOf(sach.getId())) > 0){
+                                if (sachDAO.delete(String.valueOf(sach.getId())) > 0) {
                                     Toast.makeText(getContext(), "Xoa thanh cong", Toast.LENGTH_SHORT).show();
                                     CapNhatListView();
                                     dialog.dismiss();
-                                }else {
+                                } else {
                                     Toast.makeText(getContext(), "Error", Toast.LENGTH_SHORT).show();
                                 }
                             }
                         });
 
-                        builder.setNegativeButton("Huy",null);
+                        builder.setNegativeButton("Huy", null);
                         AlertDialog alertDialog = builder.create();
                         builder.show();
 
@@ -204,7 +211,7 @@ public class Fragment_QuanLySach extends Fragment {
                 loaiSachList = new ArrayList<>();
                 loaiSachList = loaiSachDAO.getAllData();
                 // khoi tao adapter
-                LoaiSachAdapter loaiSachAdapter = new LoaiSachAdapter(getContext(),R.layout.item_loaisach,loaiSachList);
+                LoaiSachAdapter loaiSachAdapter = new LoaiSachAdapter(getContext(), R.layout.item_loaisach, loaiSachList);
                 // set Adapter
                 spinner.setAdapter(loaiSachAdapter);
 
@@ -230,12 +237,12 @@ public class Fragment_QuanLySach extends Fragment {
                         sach.setTenSach(edt_tenSach.getText().toString());
                         sach.setGiaThue(Integer.parseInt(edt_giaThue.getText().toString()));
                         sach.setMaLoai(maLoaiSachDuocChon);
-                        if (edt_tenSach.getText().length() == 0 || edt_giaThue.getText().length() == 0){
+                        if (edt_tenSach.getText().length() == 0 || edt_giaThue.getText().length() == 0) {
                             Toast.makeText(getContext(), "Khong duoc de trong thong tin", Toast.LENGTH_SHORT).show();
-                        }else {
-                            if (sachDAO.insert(sach) > 0){
+                        } else {
+                            if (sachDAO.insert(sach) > 0) {
                                 Toast.makeText(getContext(), "Them moi thanh cong", Toast.LENGTH_SHORT).show();
-                            }else {
+                            } else {
                                 Toast.makeText(getContext(), "Them moi that bai", Toast.LENGTH_SHORT).show();
                             }
                         }
@@ -261,12 +268,12 @@ public class Fragment_QuanLySach extends Fragment {
         return view;
     }
 
-    public void CapNhatListView(){
+    public void CapNhatListView() {
         // lay du lieu + do vao list
         sachList = sachDAO.getAllData();
 
         // Khoi tao adapter
-        sachAdapter = new SachAdapter(getContext(),R.layout.item_sach,sachList);
+        sachAdapter = new SachAdapter(getContext(), R.layout.item_sach, sachList);
 
         // set adapter cho listview
         lv.setAdapter(sachAdapter);

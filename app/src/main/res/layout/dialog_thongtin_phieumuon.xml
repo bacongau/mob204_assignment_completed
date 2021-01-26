@@ -8,11 +8,11 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/textView24"
+        android:id="@+id/textView25"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="Thong tin sach"
+        android:text="Thong tin Phieu muon"
         android:textColor="@color/black"
         android:textSize="25dp"
         android:textStyle="bold"
@@ -22,7 +22,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Spinner
-        android:id="@+id/spinner_dialog_thongtin_chonloaisach"
+        android:id="@+id/spinner_dialog_thongtin_phieumuon_chonThanhVien"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -30,10 +30,28 @@
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView24" />
+        app:layout_constraintTop_toBottomOf="@+id/textView25" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout12"
+        android:id="@+id/textInputLayout13"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinner_dialog_thongtin_phieumuon_chonThanhVien">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edt_dialog_thongtin_phieumuon_tenThanhvien"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Ten thanh vien" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Spinner
+        android:id="@+id/spinner_dialog_thongtin_phieumuon_chonSach"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -41,17 +59,10 @@
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner_dialog_thongtin_chonloaisach">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edt_dialog_ThongTinSach_tenTheLoai"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="The loai" />
-    </com.google.android.material.textfield.TextInputLayout>
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout13" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout10"
+        android:id="@+id/textInputLayout14"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -59,68 +70,75 @@
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout12">
+        app:layout_constraintTop_toBottomOf="@+id/spinner_dialog_thongtin_phieumuon_chonSach">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edt_dialog_ThongTinSach_tenSach"
+            android:id="@+id/edt_dialog_thongtin_phieumuon_tenSach"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Ten Sach" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout11"
+        android:id="@+id/textInputLayout15"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout10">
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout14">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edt_dialog_ThongTinSach_giaThue"
+            android:id="@+id/edt_dialog_thongtin_phieumuon_ngayTra"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Gia thue" />
+            android:hint="Ngay tra" />
     </com.google.android.material.textfield.TextInputLayout>
 
+    <Switch
+        android:id="@+id/switch_dialog_thongtin_phieumuon_chonTrangThaiTraSach"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Trang thai"
+        app:layout_constraintStart_toStartOf="@+id/textInputLayout15"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout15" />
+
     <Button
-        android:id="@+id/button_dialog_ThongTinSach_capnhat"
+        android:id="@+id/button_dialog_thongtin_phieumuon_capnhat"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="8dp"
         android:text="Cap nhat"
-        app:layout_constraintEnd_toStartOf="@+id/button_dialog_ThongTinSach_huy"
-        app:layout_constraintStart_toStartOf="@+id/textInputLayout11"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout11" />
+        app:layout_constraintEnd_toStartOf="@+id/button_dialog_thongtin_phieumuon_huy"
+        app:layout_constraintStart_toStartOf="@+id/textInputLayout15"
+        app:layout_constraintTop_toBottomOf="@+id/switch_dialog_thongtin_phieumuon_chonTrangThaiTraSach" />
 
     <Button
-        android:id="@+id/button_dialog_ThongTinSach_huy"
+        android:id="@+id/button_dialog_thongtin_phieumuon_huy"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="32dp"
         android:text="Huy"
-        app:layout_constraintEnd_toEndOf="@+id/textInputLayout11"
-        app:layout_constraintStart_toEndOf="@+id/button_dialog_ThongTinSach_capnhat"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout11" />
+        app:layout_constraintEnd_toEndOf="@+id/textInputLayout15"
+        app:layout_constraintStart_toEndOf="@+id/button_dialog_thongtin_phieumuon_capnhat"
+        app:layout_constraintTop_toBottomOf="@+id/switch_dialog_thongtin_phieumuon_chonTrangThaiTraSach" />
 
     <Button
-        android:id="@+id/button_dialog_ThongTinSach_xoa"
+        android:id="@+id/button_dialog_thongtin_phieumuon_xoa"
         android:layout_width="0dp"
-        android:layout_height="48dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="32dp"
         android:text="Xoa"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/button_dialog_ThongTinSach_huy"
-        app:layout_constraintStart_toStartOf="@+id/button_dialog_ThongTinSach_capnhat"
-        app:layout_constraintTop_toBottomOf="@+id/button_dialog_ThongTinSach_capnhat" />
-
-
+        app:layout_constraintEnd_toEndOf="@+id/button_dialog_thongtin_phieumuon_huy"
+        app:layout_constraintStart_toStartOf="@+id/button_dialog_thongtin_phieumuon_capnhat"
+        app:layout_constraintTop_toBottomOf="@+id/button_dialog_thongtin_phieumuon_capnhat" />
 </androidx.constraintlayout.widget.ConstraintLayout>
