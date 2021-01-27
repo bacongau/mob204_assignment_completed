@@ -42,7 +42,7 @@ public class Fragment_QuanLySach extends Fragment {
     List<LoaiSach> loaiSachList;
     LoaiSachDAO loaiSachDAO;
     SachDAO sachDAO;
-    int check = 1;
+
 
     public Fragment_QuanLySach() {
         // Required empty public constructor
@@ -111,16 +111,17 @@ public class Fragment_QuanLySach extends Fragment {
                 // set Adapter
                 spinner_chonloaisach.setAdapter(loaiSachAdapter);
 
+                final int[] check = {1};
                 // set click
                 spinner_chonloaisach.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position1, long id) {
                         maLoaiSachDuocChon = loaiSachList.get(position1).getId();
-                        if (check == 2) {
+                        if (check[0] == 2) {
                             edt_theloai.setText(loaiSachList.get(position1).getTenLoai());
                         }
-                        if (check == 1) {
-                            check++;
+                        if (check[0] == 1) {
+                            check[0]++;
                         }
 
                     }

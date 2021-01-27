@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.example.mob204_gd1.DAO.LoaiSachDAO;
 import com.example.mob204_gd1.Model.LoaiSach;
 import com.example.mob204_gd1.Model.Sach;
 import com.example.mob204_gd1.R;
@@ -40,7 +41,7 @@ public class SachAdapter extends BaseAdapter {
     }
 
     public class ViewHolder{
-        TextView tv_maSach,tv_tenSach,tv_giaThue,tv_maLoai;
+        TextView tv_maSach,tv_tenSach,tv_giaThue,tv_tenLoai;
     }
 
     @Override
@@ -52,7 +53,7 @@ public class SachAdapter extends BaseAdapter {
             convertView = inflater.inflate(R.layout.item_sach,null);
 
             viewHolder.tv_giaThue = convertView.findViewById(R.id.textView_giaThue);
-            viewHolder.tv_maLoai = convertView.findViewById(R.id.textView_maLoai_FK);
+            viewHolder.tv_tenLoai = convertView.findViewById(R.id.textView_tenLoai_FK);
             viewHolder.tv_maSach = convertView.findViewById(R.id.textView_maSach);
             viewHolder.tv_tenSach = convertView.findViewById(R.id.textView_tenSach);
 
@@ -62,7 +63,10 @@ public class SachAdapter extends BaseAdapter {
             }
 
         viewHolder.tv_giaThue.setText("Gia thue: " + list.get(position).getGiaThue() + "");
-        viewHolder.tv_maLoai.setText("Ma the loai: " + list.get(position).getMaLoai() + "");
+        String maLoai = String.valueOf(list.get(position).getMaLoai());
+        LoaiSachDAO loaiSachDAO = new LoaiSachDAO(context);
+        LoaiSach loaiSach = loaiSachDAO.getId(maLoai);
+        viewHolder.tv_tenLoai.setText(loaiSach.getTenLoai());
         viewHolder.tv_maSach.setText("Ma sach: " + list.get(position).getId() +"");
         viewHolder.tv_tenSach.setText(list.get(position).getTenSach());
 

@@ -66,8 +66,8 @@ public class Fragment_QuanLyPhieuMuon extends Fragment {
     Spinner spinner_chonSach, spinner_chonThanhVien;
 
     int maThanhVienDuocChon, maSachDuocChon, indexSach;
-    int check = 1;
-    int check2 = 1;
+
+
 
     public Fragment_QuanLyPhieuMuon() {
         // Required empty public constructor
@@ -143,15 +143,16 @@ public class Fragment_QuanLyPhieuMuon extends Fragment {
                 spinner_thongtin_chonthanhvien.setAdapter(thanhVienAdapter);
 
                 // set click
+                final int[] check = {1};
                 spinner_thongtin_chonthanhvien.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position1, long id) {
                         maThanhVienDuocChon = thanhVienList.get(position1).getMaThanhVien();
-                        if (check == 2) {
+                        if (check[0] == 2) {
                             edt_thongtin_tenthanhvien.setText(thanhVienList.get(position1).getHoTen());
                         }
-                        if (check == 1) {
-                            check++;
+                        if (check[0] == 1) {
+                            check[0]++;
                         }
                     }
 
@@ -169,16 +170,17 @@ public class Fragment_QuanLyPhieuMuon extends Fragment {
                 // set Adapter
                 spinner_thongtin_chonsach.setAdapter(sachSpinnerAdapter);
                 // set click
+                final int[] check2 = {1};
                 spinner_thongtin_chonsach.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position1, long id) {
                         maSachDuocChon = phieuMuonList.get(position).getIdSach();
                         indexSach = position1;
-                        if (check2 == 2) {
+                        if (check2[0] == 2) {
                             edt_thongtin_tensach.setText(sachList.get(position1).getTenSach());
                         }
-                        if (check2 == 1) {
-                            check2++;
+                        if (check2[0] == 1) {
+                            check2[0]++;
                         }
                     }
 
@@ -194,7 +196,7 @@ public class Fragment_QuanLyPhieuMuon extends Fragment {
                 int thisYear = calendar.get(Calendar.YEAR);
                 int thisMonth = calendar.get(Calendar.MONTH);
                 int thisDay = calendar.get(Calendar.DAY_OF_MONTH);
-                edt_thongtin_ngaytra.setText(simpleDateFormat.format(phieuMuon.getNgay()));
+                edt_thongtin_ngaytra.setText(phieuMuon.getNgay());
                 edt_thongtin_ngaytra.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -202,13 +204,25 @@ public class Fragment_QuanLyPhieuMuon extends Fragment {
                             @Override
                             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                                 calendar.set(year, month, dayOfMonth);
-                                edt_ngayTra.setText(simpleDateFormat.format(calendar.getTime()));
+                                edt_thongtin_ngaytra.setText(simpleDateFormat.format(calendar.getTime()));
                             }
                         }, thisYear, thisMonth, thisDay);
                         datePickerDialog.show();
                     }
                 });
 
+                swich_trangthai.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                        if (isChecked) {
+                            phieuMuon.setTraSach(0);
+                            swich_trangthai.setText("Da tra");
+                        } else {
+                            phieuMuon.setTraSach(1);
+                            swich_trangthai.setText("Chua tra");
+                        }
+                    }
+                });
 
                 button_huy.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -224,21 +238,13 @@ public class Fragment_QuanLyPhieuMuon extends Fragment {
                         phieuMuon.setIdThanhVien(maThanhVienDuocChon);
                         phieuMuon.setIdSach(maSachDuocChon);
                         phieuMuon.setIdThuThu("admin");
-                        phieuMuon.setNgay(simpleDateFormat.format(edt_thongtin_ngaytra.getText().toString()));
+                        phieuMuon.setNgay((edt_thongtin_ngaytra.getText().toString()));
 
-                        swich_trangthai.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                            @Override
-                            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                                if (isChecked) {
-                                    phieuMuon.setTraSach(0);
-                                } else {
-                                    phieuMuon.setTraSach(1);
-                                }
-                            }
-                        });
+
 
                         // tinh tien thue = so ngay thue * gia thue
                         Calendar calendar2 = Calendar.getInstance();
+
                         int soNgayThue = (int) ((calendar.getTimeInMillis() - calendar2.getTimeInMillis()) / (1000 * 60 * 60 * 24));
                         int giaThue = sachList.get(indexSach).getGiaThue();
                         int soTienThue = soNgayThue * giaThue;
@@ -336,7 +342,7 @@ public class Fragment_QuanLyPhieuMuon extends Fragment {
                 spinner_chonSach.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                        indexSach = position;
+                        indexSach = sachList.get(position).getId();
                     }
 
                     @Override
@@ -370,9 +376,8 @@ public class Fragment_QuanLyPhieuMuon extends Fragment {
                 button_luu.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-
                         PhieuMuon phieuMuon = new PhieuMuon();
-                        phieuMuon.setIdSach(maSachDuocChon);
+                        phieuMuon.setIdSach(indexSach);
                         phieuMuon.setIdThanhVien(maThanhVienDuocChon);
                         phieuMuon.setIdThuThu("admin");
 

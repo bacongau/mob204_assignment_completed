@@ -12,10 +12,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginEnd="16dp"
         android:text="Ten sach"
-        android:textSize="20dp"
         android:textColor="@color/black"
+        android:textSize="20dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/textView_maSach"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,13 +25,13 @@
         android:id="@+id/textView_maSach"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginEnd="16dp"
         android:text="Ma sach"
-        android:textSize="20dp"
         android:textColor="@color/black"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView_tenSach"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/textView_tenSach" />
 
     <TextView
         android:id="@+id/textView_giaThue"
@@ -39,23 +39,23 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginEnd="16dp"
         android:text="Gia thue"
-        android:textSize="20dp"
         android:textColor="@color/black"
-        app:layout_constraintEnd_toStartOf="@+id/textView_maLoai_FK"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toStartOf="@+id/textView_tenLoai_FK"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_tenSach" />
 
     <TextView
-        android:id="@+id/textView_maLoai_FK"
+        android:id="@+id/textView_tenLoai_FK"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginEnd="16dp"
         android:text="Ma loai"
-        android:textSize="20dp"
         android:textColor="@color/black"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView_giaThue"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_maSach" />
+        app:layout_constraintTop_toTopOf="@+id/textView_giaThue" />
 </androidx.constraintlayout.widget.ConstraintLayout>
