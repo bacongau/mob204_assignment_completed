@@ -99,16 +99,23 @@ public class Fragment_QuanLyThanhVien extends Fragment {
                 button_capNhat.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        int t=0;
                         // gan thong tin moi object
                         thanhVien1.setHoTen(edt_hotenThanhVien.getText().toString());
-                        thanhVien1.setNamSinh(Integer.parseInt(edt_namSinhThanhVien.getText().toString()));
+                        try {
+                            thanhVien1.setNamSinh(Integer.parseInt(edt_namSinhThanhVien.getText().toString()));
+                        }catch (Exception e){
+                            t=1;
+                        }
 
                         // kiem tra va cap nhat
                         if (edt_hotenThanhVien.getText().length() == 0 || edt_namSinhThanhVien.getText().length() == 0){
-                            Toast.makeText(getContext(), "Khong duoc de trong thong tin", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), "Không được để trống thông tin", Toast.LENGTH_SHORT).show();
+                        }else if (t==1){
+                            Toast.makeText(getContext(), "Nhập sai định dạng", Toast.LENGTH_SHORT).show();
                         }else {
                             if (thanhVienDAO.update(thanhVien1) > 0){
-                                Toast.makeText(getContext(), "Cap nhat thanh cong", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getContext(), "Cập nhật thành công", Toast.LENGTH_SHORT).show();
                             }else {
                                 Toast.makeText(getContext(), "Error", Toast.LENGTH_SHORT).show();
                             }
@@ -124,13 +131,13 @@ public class Fragment_QuanLyThanhVien extends Fragment {
                     @Override
                     public void onClick(View v) {
                         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-                        builder.setTitle("Xoa Thanh vien");
-                        builder.setMessage("Ban chac chan muon xoa");
-                        builder.setPositiveButton("Xoa", new DialogInterface.OnClickListener() {
+                        builder.setTitle("Xóa thành viên");
+                        builder.setMessage("Bạn chắc chắn muốn xóa");
+                        builder.setPositiveButton("Xóa", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog1, int which) {
                                 if (thanhVienDAO.delete(String.valueOf(thanhVien1.getMaThanhVien())) > 0){
-                                    Toast.makeText(getContext(), "Xoa thanh cong", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getContext(), "Xóa thành công", Toast.LENGTH_SHORT).show();
                                     CapNhatListView();
                                     dialog2.dismiss();
                                 }else {
@@ -139,7 +146,7 @@ public class Fragment_QuanLyThanhVien extends Fragment {
                             }
                         });
 
-                        builder.setNegativeButton("Huy",null);
+                        builder.setNegativeButton("Hủy",null);
                         AlertDialog alertDialog = builder.create();
                         builder.show();
 
@@ -166,13 +173,18 @@ public class Fragment_QuanLyThanhVien extends Fragment {
                     public void onClick(View v) {
 
                         ThanhVien thanhVien = new ThanhVien();
-                        thanhVien.setNamSinh(Integer.parseInt(edt_namSinh.getText().toString()));
+                        try {
+                            thanhVien.setNamSinh(Integer.parseInt(edt_namSinh.getText().toString()));
+                        }catch (Exception e){
+
+                        }
+
                         thanhVien.setHoTen(edt_tenTv.getText().toString());
                         if (validate() > 0){
                             if (thanhVienDAO.insert(thanhVien) > 0){
-                                Toast.makeText(getContext(), "Them moi thanh cong", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getContext(), "Thêm mới thành công", Toast.LENGTH_SHORT).show();
                             }else {
-                                Toast.makeText(getContext(), "Them moi that bai", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getContext(), "Thất bại", Toast.LENGTH_SHORT).show();
                             }
                         }
 
@@ -199,7 +211,13 @@ public class Fragment_QuanLyThanhVien extends Fragment {
     public int validate(){
         int check = 1;
         if (edt_namSinh.getText().length() == 0 || edt_tenTv.getText().length() == 0){
-            Toast.makeText(getContext(), "Khong duoc de trong thong tin", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), "Không được để trống thông tin", Toast.LENGTH_SHORT).show();
+            check = -1;
+        }
+        try {
+            Integer.parseInt(edt_namSinh.getText().toString());
+        }catch (Exception e){
+            Toast.makeText(getContext(), "Nhập sai định dạng", Toast.LENGTH_SHORT).show();
             check = -1;
         }
         return check;

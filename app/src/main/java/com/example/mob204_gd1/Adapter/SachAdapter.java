@@ -41,7 +41,7 @@ public class SachAdapter extends BaseAdapter {
     }
 
     public class ViewHolder{
-        TextView tv_maSach,tv_tenSach,tv_giaThue,tv_tenLoai;
+        TextView tv_maSach,tv_tenSach,tv_tenLoai;
     }
 
     @Override
@@ -52,7 +52,6 @@ public class SachAdapter extends BaseAdapter {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.item_sach,null);
 
-            viewHolder.tv_giaThue = convertView.findViewById(R.id.textView_giaThue);
             viewHolder.tv_tenLoai = convertView.findViewById(R.id.textView_tenLoai_FK);
             viewHolder.tv_maSach = convertView.findViewById(R.id.textView_maSach);
             viewHolder.tv_tenSach = convertView.findViewById(R.id.textView_tenSach);
@@ -62,12 +61,11 @@ public class SachAdapter extends BaseAdapter {
                 viewHolder = (ViewHolder) convertView.getTag();
             }
 
-        viewHolder.tv_giaThue.setText("Gia thue: " + list.get(position).getGiaThue() + "");
         String maLoai = String.valueOf(list.get(position).getMaLoai());
         LoaiSachDAO loaiSachDAO = new LoaiSachDAO(context);
         LoaiSach loaiSach = loaiSachDAO.getId(maLoai);
         viewHolder.tv_tenLoai.setText(loaiSach.getTenLoai());
-        viewHolder.tv_maSach.setText("Ma sach: " + list.get(position).getId() +"");
+        viewHolder.tv_maSach.setText("Mã sách: " + list.get(position).getId() +"");
         viewHolder.tv_tenSach.setText(list.get(position).getTenSach());
 
         return convertView;

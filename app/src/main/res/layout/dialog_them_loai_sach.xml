@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="Them Loai sach"
+        android:text="Thêm loại sách"
         android:textColor="@color/black"
         android:textSize="25dp"
         android:textStyle="bold"
@@ -36,7 +36,7 @@
             android:id="@+id/edt_dialog_tenLoaiSach"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Nhap ten loai sach" />
+            android:hint="Nhập tên loại sách" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
@@ -46,7 +46,9 @@
         android:layout_marginTop="24dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="32dp"
-        android:text="Luu"
+        android:text="Lưu"
+        android:background="@drawable/custom_button"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/button_dialogThemLoaiSach_huy"
         app:layout_constraintStart_toStartOf="@+id/textinput3"
@@ -59,7 +61,9 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="24dp"
         android:layout_marginBottom="32dp"
-        android:text="Huy"
+        android:text="Hủy"
+        android:background="@drawable/custom_button"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/textinput3"
         app:layout_constraintStart_toEndOf="@+id/button_dialogThemLoaiSach_luu"

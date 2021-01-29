@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#6fb98f"
     tools:context=".Fragments.Fragment_ThemNguoiDung">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -23,10 +24,12 @@
             app:layout_constraintEnd_toEndOf="parent" />
 
         <ListView
+            android:background="@color/white"
             android:id="@+id/lv_thuthu"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginTop="8dp"
+            android:layout_marginBottom="92dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -41,10 +44,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Danh sach thu thu"
+            android:text="Danh sách thủ thư"
             android:textStyle="bold"
             android:textSize="25dp"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
@@ -57,9 +60,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
-            android:text="Ma TT"
+            android:text="Mã TT"
             android:textSize="20dp"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView18" />
 
@@ -70,8 +73,8 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="24dp"
             android:gravity="center"
-            android:text="Mat khau"
-            android:textColor="@color/black"
+            android:text="Mật khẩu"
+            android:textColor="@color/white"
             android:textSize="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView18" />
@@ -84,9 +87,9 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
-            android:text="Ho ten"
+            android:text="Họ tên"
             android:textSize="20dp"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             app:layout_constraintEnd_toStartOf="@+id/textView20"
             app:layout_constraintStart_toEndOf="@+id/textView19"
             app:layout_constraintTop_toBottomOf="@+id/textView18" />

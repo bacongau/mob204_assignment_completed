@@ -15,7 +15,7 @@
         android:layout_marginTop="8dp"
         android:text="id"
         android:textSize="20dp"
-        android:textColor="@color/black"
+        android:textColor="#004445"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -29,8 +29,7 @@
         android:layout_marginEnd="16dp"
         android:text="ho ten thu thu"
         android:textSize="20dp"
-        android:textStyle="bold"
-        android:textColor="@color/black"
+        android:textColor="#021c1e"
         app:layout_constraintEnd_toStartOf="@+id/textView_matKhau"
         app:layout_constraintStart_toEndOf="@+id/textView_idThuThu"
         app:layout_constraintTop_toTopOf="parent" />
@@ -43,7 +42,7 @@
         android:layout_marginEnd="40dp"
         android:gravity="center"
         android:text="mat khau"
-        android:textColor="@color/black"
+        android:textColor="#2c7873"
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

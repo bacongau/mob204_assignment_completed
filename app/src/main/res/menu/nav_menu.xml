@@ -1,57 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <group android:checkableBehavior="single">
         <item
-            android:title="Quan ly phieu muon"
             android:id="@+id/nav_quanlyphieumuon"
-            android:icon="@drawable/home"/>
+            android:icon="@drawable/home"
+            android:title="Quản lý phiếu mượn" />
         <item
-            android:title="Quan ly loai sach"
             android:id="@+id/nav_quanlyloaisach"
-            android:icon="@drawable/category"/>
+            android:icon="@drawable/category"
+            android:title="Quản lý loại sách" />
         <item
-            android:title="Quan ly sach"
             android:id="@+id/nav_quanlysach"
-            android:icon="@drawable/book"/>
+            android:icon="@drawable/book"
+            android:title="Quản lý sách" />
         <item
-            android:title="Quan ly thanh vien"
             android:id="@+id/nav_quanlythanhvien"
-            android:icon="@drawable/member"/>
+            android:icon="@drawable/member"
+            android:title="Quản lý thành viên" />
     </group>
 
 
-    <item android:title="Thong ke">
+    <item android:title="Thống kê">
         <menu>
             <group android:checkableBehavior="single">
                 <item
-                    android:title="10 sach muon nhieu nhat"
                     android:id="@+id/nav_top10sach"
-                    android:icon="@drawable/analysis"/>
+                    android:icon="@drawable/analysis"
+                    android:title="10 sách mượn nhiều nhất" />
                 <item
-                    android:title="Doanh thu"
                     android:id="@+id/nav_doanhthu"
-                    android:icon="@drawable/revenue"/>
+                    android:icon="@drawable/revenue"
+                    android:title="Doanh thu" />
             </group>
         </menu>
     </item>
 
-    <item android:title="Nguoi dung">
+    <item
+        android:id="@+id/nav_group_nguoidung"
+        android:title="Người dùng">
         <menu>
             <group android:checkableBehavior="single">
                 <item
-                    android:title="Them nguoi dung"
                     android:id="@+id/nav_themnguoidung"
-                    android:icon="@drawable/add"/>
+                    android:icon="@drawable/add"
+                    android:title="Thêm người dùng"
+                    android:visible="true" />
                 <item
-                    android:title="Doi mat khau"
                     android:id="@+id/nav_doimatkhau"
-                    android:icon="@drawable/key"/>
+                    android:icon="@drawable/key"
+                    android:title="Đổi mật khẩu" />
                 <item
-                    android:title="Dang xuat"
                     android:id="@+id/nav_dangxuat"
-                    android:icon="@drawable/logout"/>
+                    android:icon="@drawable/logout"
+                    android:title="Đăng xuất" />
             </group>
         </menu>
     </item>
 
 </menu>
+
+

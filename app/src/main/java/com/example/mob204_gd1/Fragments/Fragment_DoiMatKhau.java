@@ -60,12 +60,12 @@ public class    Fragment_DoiMatKhau extends Fragment {
                     thuThu.setMatKhau(edt_mkMoi.getText().toString());
 
                     if (thuThuDAO.updatePass(thuThu) > 0){
-                        Toast.makeText(getContext(), "Thay doi mat khau thanh cong", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), "Đổi mật khẩu thành công", Toast.LENGTH_SHORT).show();
                         edt_mkCu.setText("");
                         edt_mkMoi.setText("");
                         edt_mkMoi2.setText("");
                     }else {
-                        Toast.makeText(getContext(), "Khong thanh cong", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), "Thất bại", Toast.LENGTH_SHORT).show();
                     }
                 }
             }
@@ -77,7 +77,7 @@ public class    Fragment_DoiMatKhau extends Fragment {
     public int validate(){
         int check = 1;
         if (edt_mkCu.getText().toString().length() == 0 || edt_mkMoi2.getText().toString().length() == 0 || edt_mkMoi.getText().toString().length() == 0){
-            Toast.makeText(getContext(), "Khong duoc de trong thong tin", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), "Không được để trống thông tin", Toast.LENGTH_SHORT).show();
             check = -1;
         }else {
             SharedPreferences sharedPreferences = getActivity().getSharedPreferences("ThongTinDangNhap", Context.MODE_PRIVATE);
@@ -85,11 +85,11 @@ public class    Fragment_DoiMatKhau extends Fragment {
             String mkMoi = edt_mkMoi.getText().toString();
             String mkMoi2 = edt_mkMoi2.getText().toString();
             if (mkCu.equals(edt_mkCu.getText().toString()) == false){
-                Toast.makeText(getContext(), "Mat khau cu sai", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Mật khẩu cũ không đúng", Toast.LENGTH_SHORT).show();
                 check = -1;
             }
             if (mkMoi.equals(mkMoi2) == false){
-                Toast.makeText(getContext(), "Mat khau khong trung khop", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Mật khẩu không trùng khớp", Toast.LENGTH_SHORT).show();
             }
         }
         return check;

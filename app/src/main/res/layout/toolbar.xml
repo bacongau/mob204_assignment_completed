@@ -6,11 +6,12 @@
     android:layout_height="match_parent">
 
     <androidx.appcompat.widget.Toolbar
+        app:titleTextColor="@color/white"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         app:layout_constraintTop_toTopOf="parent"
         android:id="@+id/toolbar"
-        android:background="#3F51B5"
+        android:background="#f22e3d"
         android:fitsSystemWindows="true"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

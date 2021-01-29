@@ -10,15 +10,15 @@
         android:id="@+id/textView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
-        android:text="Dang nhap"
-        android:textSize="35dp"
+        android:layout_marginTop="8dp"
+        android:text="Đăng nhập"
         android:textColor="@color/black"
+        android:textSize="35dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView7" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textinpupt1"
@@ -35,11 +35,10 @@
             android:id="@+id/edt_login_tenDangNhap"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Ten dang nhap" />
+            android:hint="Tên đăng nhập" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        app:passwordToggleEnabled="true"
         android:id="@+id/textinput2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -48,14 +47,15 @@
         android:layout_marginEnd="32dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textinpupt1">
+        app:layout_constraintTop_toBottomOf="@+id/textinpupt1"
+        app:passwordToggleEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edt_login_matKhau"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPassword"
-            android:hint="Mat khau" />
+            android:hint="Mật khẩu"
+            android:inputType="textPassword" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <CheckBox
@@ -63,7 +63,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="Luu mat khau"
+        android:text="Lưu mật khẩu"
         app:layout_constraintStart_toStartOf="@+id/textinput2"
         app:layout_constraintTop_toBottomOf="@+id/textinput2" />
 
@@ -73,7 +73,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="32dp"
-        android:text="Huy"
+        android:text="Hủy"
+        android:background="@drawable/custom_button"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="@+id/button_login_dangNhap"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/button_login_dangNhap"
@@ -86,8 +88,22 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="24dp"
-        android:text="Dang nhap"
+        android:text="Đăng nhập"
+        android:background="@drawable/custom_button"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toStartOf="@+id/button_login_huy"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/checkBox_luuMatKhau" />
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="320dp"
+        android:layout_height="186dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/login" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

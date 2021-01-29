@@ -1,10 +1,14 @@
 package com.example.mob204_gd1;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -25,6 +29,19 @@ public class LoginScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_screen);
 
+        ActionBar actionBar;
+        actionBar = getSupportActionBar();
+
+        // Define ColorDrawable object and parse color
+        // using parseColor method
+        // with color hash code as its parameter
+        ColorDrawable colorDrawable
+                = new ColorDrawable(Color.parseColor("#f22e3d"));
+
+        // Set BackgroundDrawable
+        actionBar.setBackgroundDrawable(colorDrawable);
+        actionBar.setTitle("");
+
         edt_matKhau = findViewById(R.id.edt_login_matKhau);
         edt_tenDangNhap = findViewById(R.id.edt_login_tenDangNhap);
         button_dangNhap = findViewById(R.id.button_login_dangNhap);
@@ -42,8 +59,8 @@ public class LoginScreen extends AppCompatActivity {
         button_huy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                edt_tenDangNhap.setText("");
                 edt_matKhau.setText("");
+                edt_tenDangNhap.setText("");
             }
         });
 
@@ -79,7 +96,7 @@ public class LoginScreen extends AppCompatActivity {
     public void luuThongTinDangNhap(String ten,String matkhau,boolean remember){
         SharedPreferences sharedPreferences = getSharedPreferences("ThongTinDangNhap",MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        if (remember = false){
+        if (remember == false){
             editor.clear();
         }else {
             editor.putString("TENDANGNHAP",ten);

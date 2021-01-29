@@ -17,7 +17,9 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="32dp"
             android:layout_marginEnd="32dp"
-            android:text="Huy"
+            android:text="Hủy"
+            android:background="@drawable/custom_button"
+            android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/button_luuMatKhauMoi"
             app:layout_constraintTop_toBottomOf="@+id/textinput13" />
@@ -50,7 +52,7 @@
                 android:id="@+id/edt_matKhauCu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Mat khau cu" />
+                android:hint="Mật khẩu cũ" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -70,7 +72,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
-                android:hint="Mat khau moi" />
+                android:hint="Mật khẩu mới" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -90,7 +92,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
-                android:hint="Nhap lai mat khau moi" />
+                android:hint="Nhập lại mật khẩu mới" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
@@ -100,7 +102,9 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="32dp"
             android:layout_marginEnd="16dp"
-            android:text="Luu"
+            android:text="Lưu"
+            android:background="@drawable/custom_button"
+            android:textColor="@color/white"
             app:layout_constraintEnd_toStartOf="@+id/button_huyLuuMatKhauMoi"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textinput13" />

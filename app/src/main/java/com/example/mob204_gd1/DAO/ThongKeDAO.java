@@ -3,6 +3,7 @@ package com.example.mob204_gd1.DAO;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import com.example.mob204_gd1.Database.DbHelper;
 import com.example.mob204_gd1.Model.Sach;
@@ -42,14 +43,19 @@ public class ThongKeDAO {
 
     // thong ke doanh thu
     public int getDoanhThu(String tuNgay, String denNgay){
-        String sql = "SELECT SUM(tienthue) as doanhthu FROM PhieuMuon WHERE ngay BETWEEN ? AND ?";
+        String sql = "SELECT SUM(tienThue) as doanhthu FROM PhieuMuon WHERE ngay BETWEEN ? AND ?";
         List<Integer> list = new ArrayList<Integer>();
         Cursor cursor = db.rawQuery(sql,new String[]{tuNgay,denNgay});
 
         while (cursor.moveToNext()){
             try {
+                String a = cursor.getString(cursor.getColumnIndex("doanhthu"));
+                Log.e("aaa","doanh thu " + a);
+                Log.e("aaa","Chuan bi parse");
                 list.add(Integer.parseInt(cursor.getString(cursor.getColumnIndex("doanhthu"))));
+                Log.e("aaa","khong loi");
             }catch (Exception e){
+                Log.e("aaa","Loi loi");
                 list.add(0);
             }
         }

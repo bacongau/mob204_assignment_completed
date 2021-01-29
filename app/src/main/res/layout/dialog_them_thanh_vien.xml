@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="Them Thanh Vien"
+        android:text="Thêm Thành Viên"
         android:textColor="@color/black"
         android:textSize="25dp"
         android:textStyle="bold"
@@ -37,7 +37,7 @@
             android:id="@+id/edt_dialogThemTv_ten"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Nhap ten thanh vien" />
+            android:hint="Nhập tên thành viên" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -55,7 +55,7 @@
             android:id="@+id/edt_dialogThemTv_namsinh"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Nhap nam sinh" />
+            android:hint="Nhập năm sinh" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
@@ -65,7 +65,9 @@
         android:layout_marginTop="24dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="32dp"
-        android:text="Luu"
+        android:text="Lưu"
+        android:background="@drawable/custom_button"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/button_dialogThemTv_huy"
         app:layout_constraintStart_toStartOf="@+id/textinput8"
@@ -78,7 +80,9 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="24dp"
         android:layout_marginBottom="32dp"
-        android:text="Huy"
+        android:text="Hủy"
+        android:background="@drawable/custom_button"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/textinput8"
         app:layout_constraintStart_toEndOf="@+id/button_dialogThemTv_luu"

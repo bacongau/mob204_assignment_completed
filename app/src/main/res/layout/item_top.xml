@@ -7,28 +7,32 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/textView_idLoaiSach"
-        android:layout_width="30dp"
+        android:id="@+id/textView_Top10_tenSach"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="ma loai"
-        android:textColor="#004445"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="8dp"
+        android:text="TextView"
+        android:textColor="#021c1e"
         android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/textView_top10_soLuong"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView_tenLoaiSach"
-        android:layout_width="0dp"
+        android:id="@+id/textView_top10_soLuong"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:text="ten loai"
-        android:textColor="#021c1e"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        android:text="TextView"
+        android:textColor="#004445"
         android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView_idLoaiSach"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

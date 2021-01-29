@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="Them Phieu Muon"
+        android:text="Thêm phiếu mượn"
         android:textColor="@color/black"
         android:textSize="25dp"
         android:textStyle="bold"
@@ -58,7 +58,7 @@
             android:id="@+id/edt_dialogThemPhieuMuon_chonNgayTra"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Chon ngay tra sach" />
+            android:hint="Chọn ngày trả sách" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
@@ -68,7 +68,9 @@
         android:layout_marginTop="24dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="32dp"
-        android:text="Luu"
+        android:text="Lưu"
+        android:background="@drawable/custom_button"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/button_dialogThemPhieuMuon_huy"
         app:layout_constraintStart_toStartOf="@+id/textinput4"
@@ -81,7 +83,9 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="24dp"
         android:layout_marginBottom="32dp"
-        android:text="Huy"
+        android:text="Hủy"
+        android:background="@drawable/custom_button"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/textinput4"
         app:layout_constraintStart_toEndOf="@+id/button_dialogThemPhieuMuon_luu"

@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -216,10 +217,10 @@ public class Fragment_QuanLyPhieuMuon extends Fragment {
                     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                         if (isChecked) {
                             phieuMuon.setTraSach(0);
-                            swich_trangthai.setText("Da tra");
+                            swich_trangthai.setText("Đã trả");
                         } else {
                             phieuMuon.setTraSach(1);
-                            swich_trangthai.setText("Chua tra");
+                            swich_trangthai.setText("Chưa trả");
                         }
                     }
                 });
@@ -252,10 +253,10 @@ public class Fragment_QuanLyPhieuMuon extends Fragment {
 
                         // kiem tra va cap nhat
                         if (edt_thongtin_tensach.getText().length() == 0 || edt_thongtin_tenthanhvien.getText().length() == 0 || edt_thongtin_ngaytra.getText().length() == 0) {
-                            Toast.makeText(getContext(), "Khong duoc de trong thong tin", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), "Không được để trống thông tin", Toast.LENGTH_SHORT).show();
                         } else {
                             if (phieuMuonDAO.update(phieuMuon) > 0) {
-                                Toast.makeText(getContext(), "Cap nhat thanh cong", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getContext(), "Cập nhật thành công", Toast.LENGTH_SHORT).show();
                             } else {
                                 Toast.makeText(getContext(), "Error", Toast.LENGTH_SHORT).show();
                             }
@@ -271,13 +272,13 @@ public class Fragment_QuanLyPhieuMuon extends Fragment {
                     @Override
                     public void onClick(View v) {
                         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-                        builder.setTitle("Xoa Loai sach");
-                        builder.setMessage("Ban chac chan muon xoa");
-                        builder.setPositiveButton("Xoa", new DialogInterface.OnClickListener() {
+                        builder.setTitle("Xóa phiếu mượn");
+                        builder.setMessage("Bạn chắc chắn muốn xóa");
+                        builder.setPositiveButton("Xóa", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog1, int which) {
                                 if (phieuMuonDAO.delete(String.valueOf(phieuMuon.getId())) > 0) {
-                                    Toast.makeText(getContext(), "Xoa thanh cong", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getContext(), "Xóa thành công", Toast.LENGTH_SHORT).show();
                                     CapNhatListView();
                                     dialog.dismiss();
                                 } else {
@@ -286,7 +287,7 @@ public class Fragment_QuanLyPhieuMuon extends Fragment {
                             }
                         });
 
-                        builder.setNegativeButton("Huy", null);
+                        builder.setNegativeButton("Hủy", null);
                         AlertDialog alertDialog = builder.create();
                         builder.show();
 
@@ -379,7 +380,9 @@ public class Fragment_QuanLyPhieuMuon extends Fragment {
                         PhieuMuon phieuMuon = new PhieuMuon();
                         phieuMuon.setIdSach(indexSach);
                         phieuMuon.setIdThanhVien(maThanhVienDuocChon);
-                        phieuMuon.setIdThuThu("admin");
+
+                        String a = getArguments().getString("user_key");
+                        phieuMuon.setIdThuThu(a);
 
                         String ngayTra = edt_ngayTra.getText().toString();
                         phieuMuon.setNgay(ngayTra);
@@ -387,19 +390,20 @@ public class Fragment_QuanLyPhieuMuon extends Fragment {
                         // tinh tien thue = so ngay thue * gia thue
                         Calendar calendar1 = Calendar.getInstance();
                         int soNgayThue = (int) ((calendar.getTimeInMillis() - calendar1.getTimeInMillis()) / (1000 * 60 * 60 * 24));
-                        int giaThue = sachList.get(indexSach).getGiaThue();
+                        Sach sach = sachDAO.getId(String.valueOf(indexSach));
+                        int giaThue = sach.getGiaThue();
                         int soTienThue = soNgayThue * giaThue;
                         phieuMuon.setTienThue(soTienThue);
 
                         phieuMuon.setTraSach(1);
 
                         if (edt_ngayTra.getText().length() == 0) {
-                            Toast.makeText(getContext(), "Khong duoc de trong thong tin", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), "Không được để trống thông tin", Toast.LENGTH_SHORT).show();
                         } else {
                             if (phieuMuonDAO.insert(phieuMuon) > 0) {
-                                Toast.makeText(getContext(), "Them moi thanh cong", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getContext(), "Thêm mới thành công", Toast.LENGTH_SHORT).show();
                             } else {
-                                Toast.makeText(getContext(), "Them moi that bai", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getContext(), "Thất bại", Toast.LENGTH_SHORT).show();
                             }
                         }
 
@@ -413,7 +417,7 @@ public class Fragment_QuanLyPhieuMuon extends Fragment {
                 button_huy.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        dialog.cancel();
+                        dialog.dismiss();
                     }
                 });
 

@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="Thong tin Thu Thu"
+        android:text="Thông tin Thủ Thư"
         android:textColor="@color/black"
         android:textSize="25dp"
         android:textStyle="bold"
@@ -36,7 +36,7 @@
             android:id="@+id/edt_dialogThongTinTT_maTT"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Ma thu thu" />
+            android:hint="Mã thủ thư" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -54,7 +54,7 @@
             android:id="@+id/edt_dialogThongTinTT_hoTenTT"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Ho ten" />
+            android:hint="Họ tên" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -72,7 +72,7 @@
             android:id="@+id/edt_dialogThongTinTT_matKhau"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Mat khau" />
+            android:hint="Mật khẩu" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
@@ -81,7 +81,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="8dp"
-        android:text="Cap nhat"
+        android:text="Cập nhật"
+        android:background="@drawable/custom_button"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toStartOf="@+id/button_dialogThongTinTT_huy"
         app:layout_constraintStart_toStartOf="@+id/textInputLayout6"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout6" />
@@ -92,7 +94,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="32dp"
-        android:text="Huy"
+        android:text="Hủy"
+        android:background="@drawable/custom_button"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="@+id/textInputLayout6"
         app:layout_constraintStart_toEndOf="@+id/button_dialogThongTinTT_capnhat"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout6" />
@@ -105,7 +109,9 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="32dp"
-        android:text="Xoa"
+        android:text="Xóa"
+        android:background="@drawable/custom_button"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/button_dialogThongTinTT_huy"
         app:layout_constraintStart_toStartOf="@+id/button_dialogThongTinTT_capnhat"

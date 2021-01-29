@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="Thong tin Phieu muon"
+        android:text="Thông tin phiếu mượn"
         android:textColor="@color/black"
         android:textSize="25dp"
         android:textStyle="bold"
@@ -47,7 +47,7 @@
             android:id="@+id/edt_dialog_thongtin_phieumuon_tenThanhvien"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Ten thanh vien" />
+            android:hint="Tên thành viên" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Spinner
@@ -76,7 +76,7 @@
             android:id="@+id/edt_dialog_thongtin_phieumuon_tenSach"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Ten Sach" />
+            android:hint="Tên sách" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -94,7 +94,7 @@
             android:id="@+id/edt_dialog_thongtin_phieumuon_ngayTra"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Ngay tra" />
+            android:hint="Ngày trả" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Switch
@@ -102,7 +102,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Trang thai"
+        android:text="Trạng thái"
         app:layout_constraintStart_toStartOf="@+id/textInputLayout15"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout15" />
 
@@ -112,7 +112,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="8dp"
-        android:text="Cap nhat"
+        android:text="Cập nhật"
+        android:background="@drawable/custom_button"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toStartOf="@+id/button_dialog_thongtin_phieumuon_huy"
         app:layout_constraintStart_toStartOf="@+id/textInputLayout15"
         app:layout_constraintTop_toBottomOf="@+id/switch_dialog_thongtin_phieumuon_chonTrangThaiTraSach" />
@@ -123,7 +125,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="32dp"
-        android:text="Huy"
+        android:text="Hủy"
+        android:background="@drawable/custom_button"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="@+id/textInputLayout15"
         app:layout_constraintStart_toEndOf="@+id/button_dialog_thongtin_phieumuon_capnhat"
         app:layout_constraintTop_toBottomOf="@+id/switch_dialog_thongtin_phieumuon_chonTrangThaiTraSach" />
@@ -136,7 +140,9 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="32dp"
-        android:text="Xoa"
+        android:text="Xóa"
+        android:background="@drawable/custom_button"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/button_dialog_thongtin_phieumuon_huy"
         app:layout_constraintStart_toStartOf="@+id/button_dialog_thongtin_phieumuon_capnhat"
