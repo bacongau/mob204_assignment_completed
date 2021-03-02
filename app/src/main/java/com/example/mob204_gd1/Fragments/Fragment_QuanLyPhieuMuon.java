@@ -66,8 +66,7 @@ public class Fragment_QuanLyPhieuMuon extends Fragment {
     EditText edt_ngayTra;
     Spinner spinner_chonSach, spinner_chonThanhVien;
 
-    int maThanhVienDuocChon, maSachDuocChon, indexSach;
-
+    int maThanhVienDuocChon = -1, maSachDuocChon, indexSach = -1;
 
 
     public Fragment_QuanLyPhieuMuon() {
@@ -97,6 +96,10 @@ public class Fragment_QuanLyPhieuMuon extends Fragment {
         thanhVienList = new ArrayList<>();
         loaiSachList = new ArrayList<>();
         loaiSachList = loaiSachDAO.getAllData();
+
+        if (phieuMuonList.size() == 0) {
+            Toast.makeText(getContext(), "Chưa có dữ liệu", Toast.LENGTH_SHORT).show();
+        }
 
         // Khoi tao adapter
         phieuMuonAdapter = new PhieuMuonAdapter(getContext(), R.layout.item_phieumuon, phieuMuonList);
@@ -242,23 +245,24 @@ public class Fragment_QuanLyPhieuMuon extends Fragment {
                         phieuMuon.setNgay((edt_thongtin_ngaytra.getText().toString()));
 
 
-
                         // tinh tien thue = so ngay thue * gia thue
                         Calendar calendar2 = Calendar.getInstance();
 
-                        int soNgayThue = (int) ((calendar.getTimeInMillis() - calendar2.getTimeInMillis()) / (1000 * 60 * 60 * 24));
+                        int soNgayThue1 = (int) ((calendar.getTimeInMillis() - calendar2.getTimeInMillis()) / (1000 * 60 * 60 * 24));
                         int giaThue = sachList.get(indexSach).getGiaThue();
-                        int soTienThue = soNgayThue * giaThue;
+                        int soTienThue = soNgayThue1 * giaThue;
                         phieuMuon.setTienThue(soTienThue);
 
-                        // kiem tra va cap nhat
-                        if (edt_thongtin_tensach.getText().length() == 0 || edt_thongtin_tenthanhvien.getText().length() == 0 || edt_thongtin_ngaytra.getText().length() == 0) {
+
+                        if (edt_thongtin_ngaytra.getText().length() == 0) {
                             Toast.makeText(getContext(), "Không được để trống thông tin", Toast.LENGTH_SHORT).show();
+                        } else if (soNgayThue1 < 0) {
+                            Toast.makeText(getContext(), "Ngày trả không hợp lệ", Toast.LENGTH_SHORT).show();
                         } else {
                             if (phieuMuonDAO.update(phieuMuon) > 0) {
                                 Toast.makeText(getContext(), "Cập nhật thành công", Toast.LENGTH_SHORT).show();
                             } else {
-                                Toast.makeText(getContext(), "Error", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getContext(), "Thất bại", Toast.LENGTH_SHORT).show();
                             }
                         }
 
@@ -381,6 +385,8 @@ public class Fragment_QuanLyPhieuMuon extends Fragment {
                         phieuMuon.setIdSach(indexSach);
                         phieuMuon.setIdThanhVien(maThanhVienDuocChon);
 
+                        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
+
                         String a = getArguments().getString("user_key");
                         phieuMuon.setIdThuThu(a);
 
@@ -390,15 +396,22 @@ public class Fragment_QuanLyPhieuMuon extends Fragment {
                         // tinh tien thue = so ngay thue * gia thue
                         Calendar calendar1 = Calendar.getInstance();
                         int soNgayThue = (int) ((calendar.getTimeInMillis() - calendar1.getTimeInMillis()) / (1000 * 60 * 60 * 24));
-                        Sach sach = sachDAO.getId(String.valueOf(indexSach));
-                        int giaThue = sach.getGiaThue();
-                        int soTienThue = soNgayThue * giaThue;
-                        phieuMuon.setTienThue(soTienThue);
+                        if (sachList.size() != 0) {
+                            Sach sach = sachDAO.getId(String.valueOf(indexSach));
+                            int giaThue = sach.getGiaThue();
+                            int soTienThue = soNgayThue * giaThue;
+                            phieuMuon.setTienThue(soTienThue);
+                        }
+
 
                         phieuMuon.setTraSach(1);
 
                         if (edt_ngayTra.getText().length() == 0) {
                             Toast.makeText(getContext(), "Không được để trống thông tin", Toast.LENGTH_SHORT).show();
+                        } else if (soNgayThue < 0) {
+                            Toast.makeText(getContext(), "Ngày trả không hợp lệ", Toast.LENGTH_SHORT).show();
+                        } else if (maThanhVienDuocChon == -1 || indexSach == -1) {
+                            Toast.makeText(getContext(), "Chưa có dữ liệu sách/thành viên", Toast.LENGTH_SHORT).show();
                         } else {
                             if (phieuMuonDAO.insert(phieuMuon) > 0) {
                                 Toast.makeText(getContext(), "Thêm mới thành công", Toast.LENGTH_SHORT).show();
@@ -406,6 +419,7 @@ public class Fragment_QuanLyPhieuMuon extends Fragment {
                                 Toast.makeText(getContext(), "Thất bại", Toast.LENGTH_SHORT).show();
                             }
                         }
+
 
                         CapNhatListView();
                         dialog.dismiss();

@@ -62,7 +62,7 @@ public class Fragment_QuanLyThanhVien extends Fragment {
         list = thanhVienDAO.getAllData();
 
         // Khoi tao adapter
-        adapter = new ThanhVienAdapter(getContext(),R.layout.item_thanhvien,list);
+        adapter = new ThanhVienAdapter(getContext(), R.layout.item_thanhvien, list);
 
         // set adapter cho listview
         lv.setAdapter(adapter);
@@ -99,24 +99,24 @@ public class Fragment_QuanLyThanhVien extends Fragment {
                 button_capNhat.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        int t=0;
+                        int t = 0;
                         // gan thong tin moi object
                         thanhVien1.setHoTen(edt_hotenThanhVien.getText().toString());
                         try {
                             thanhVien1.setNamSinh(Integer.parseInt(edt_namSinhThanhVien.getText().toString()));
-                        }catch (Exception e){
-                            t=1;
+                        } catch (Exception e) {
+                            t = 1;
                         }
 
                         // kiem tra va cap nhat
-                        if (edt_hotenThanhVien.getText().length() == 0 || edt_namSinhThanhVien.getText().length() == 0){
+                        if (edt_hotenThanhVien.getText().length() == 0 || edt_namSinhThanhVien.getText().length() == 0) {
                             Toast.makeText(getContext(), "Không được để trống thông tin", Toast.LENGTH_SHORT).show();
-                        }else if (t==1){
+                        } else if (t == 1) {
                             Toast.makeText(getContext(), "Nhập sai định dạng", Toast.LENGTH_SHORT).show();
-                        }else {
-                            if (thanhVienDAO.update(thanhVien1) > 0){
+                        } else {
+                            if (thanhVienDAO.update(thanhVien1) > 0) {
                                 Toast.makeText(getContext(), "Cập nhật thành công", Toast.LENGTH_SHORT).show();
-                            }else {
+                            } else {
                                 Toast.makeText(getContext(), "Error", Toast.LENGTH_SHORT).show();
                             }
                         }
@@ -136,17 +136,17 @@ public class Fragment_QuanLyThanhVien extends Fragment {
                         builder.setPositiveButton("Xóa", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog1, int which) {
-                                if (thanhVienDAO.delete(String.valueOf(thanhVien1.getMaThanhVien())) > 0){
+                                if (thanhVienDAO.delete(String.valueOf(thanhVien1.getMaThanhVien())) > 0) {
                                     Toast.makeText(getContext(), "Xóa thành công", Toast.LENGTH_SHORT).show();
                                     CapNhatListView();
                                     dialog2.dismiss();
-                                }else {
+                                } else {
                                     Toast.makeText(getContext(), "Error", Toast.LENGTH_SHORT).show();
                                 }
                             }
                         });
 
-                        builder.setNegativeButton("Hủy",null);
+                        builder.setNegativeButton("Hủy", null);
                         AlertDialog alertDialog = builder.create();
                         builder.show();
 
@@ -172,18 +172,13 @@ public class Fragment_QuanLyThanhVien extends Fragment {
                     @Override
                     public void onClick(View v) {
 
-                        ThanhVien thanhVien = new ThanhVien();
-                        try {
+                        if (validate() > 0) {
+                            ThanhVien thanhVien = new ThanhVien();
                             thanhVien.setNamSinh(Integer.parseInt(edt_namSinh.getText().toString()));
-                        }catch (Exception e){
-
-                        }
-
-                        thanhVien.setHoTen(edt_tenTv.getText().toString());
-                        if (validate() > 0){
-                            if (thanhVienDAO.insert(thanhVien) > 0){
+                            thanhVien.setHoTen(edt_tenTv.getText().toString());
+                            if (thanhVienDAO.insert(thanhVien) > 0) {
                                 Toast.makeText(getContext(), "Thêm mới thành công", Toast.LENGTH_SHORT).show();
-                            }else {
+                            } else {
                                 Toast.makeText(getContext(), "Thất bại", Toast.LENGTH_SHORT).show();
                             }
                         }
@@ -208,27 +203,21 @@ public class Fragment_QuanLyThanhVien extends Fragment {
         return view;
     }
 
-    public int validate(){
+    public int validate() {
         int check = 1;
-        if (edt_namSinh.getText().length() == 0 || edt_tenTv.getText().length() == 0){
+        if (edt_namSinh.getText().length() == 0 || edt_tenTv.getText().length() == 0) {
             Toast.makeText(getContext(), "Không được để trống thông tin", Toast.LENGTH_SHORT).show();
-            check = -1;
-        }
-        try {
-            Integer.parseInt(edt_namSinh.getText().toString());
-        }catch (Exception e){
-            Toast.makeText(getContext(), "Nhập sai định dạng", Toast.LENGTH_SHORT).show();
             check = -1;
         }
         return check;
     }
 
-    public void CapNhatListView(){
+    public void CapNhatListView() {
         // lay du lieu + do vao list
         list = thanhVienDAO.getAllData();
 
         // Khoi tao adapter
-        adapter = new ThanhVienAdapter(getContext(),R.layout.item_thanhvien,list);
+        adapter = new ThanhVienAdapter(getContext(), R.layout.item_thanhvien, list);
 
         // set adapter cho listview
         lv.setAdapter(adapter);

@@ -47,6 +47,8 @@
             android:id="@+id/edt_dialog_thongtin_phieumuon_tenThanhvien"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="text"
+            android:enabled="false"
             android:hint="Tên thành viên" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -76,6 +78,8 @@
             android:id="@+id/edt_dialog_thongtin_phieumuon_tenSach"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="text"
+            android:enabled="false"
             android:hint="Tên sách" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -94,6 +98,7 @@
             android:id="@+id/edt_dialog_thongtin_phieumuon_ngayTra"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="text"
             android:hint="Ngày trả" />
     </com.google.android.material.textfield.TextInputLayout>
 

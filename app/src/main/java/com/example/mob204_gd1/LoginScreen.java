@@ -32,6 +32,8 @@ public class LoginScreen extends AppCompatActivity {
         ActionBar actionBar;
         actionBar = getSupportActionBar();
 
+        Toast.makeText(this, "Tên đăng nhập: admin " + "\n" + "Mật khẩu: admin ", Toast.LENGTH_LONG).show();
+
         // Define ColorDrawable object and parse color
         // using parseColor method
         // with color hash code as its parameter
@@ -77,10 +79,10 @@ public class LoginScreen extends AppCompatActivity {
         String a = edt_tenDangNhap.getText().toString();
         String b = edt_matKhau.getText().toString();
         if (a.isEmpty() || b.isEmpty()){
-            Toast.makeText(this, "Thong tin dang nhap dang trong", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Không được để trống thông tin", Toast.LENGTH_SHORT).show();
         }else {
             if (thuThuDAO.checkLogin(a,b) > 0  ||  (a.equals("admin") && b.equals("admin"))){
-                Toast.makeText(this, "Dang nhap thanh cong", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
                 luuThongTinDangNhap(a,b,chk_luuDangNhap.isChecked());
 
                 Intent intent = new Intent(this,MainActivity.class);
@@ -88,7 +90,7 @@ public class LoginScreen extends AppCompatActivity {
                 startActivity(intent);
                 finish();
             }else {
-                Toast.makeText(this, "Sai thong tin dang nhap", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Sai thông tin đăng nhập", Toast.LENGTH_SHORT).show();
             }
         }
     }

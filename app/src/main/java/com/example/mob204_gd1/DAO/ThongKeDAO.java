@@ -50,12 +50,8 @@ public class ThongKeDAO {
         while (cursor.moveToNext()){
             try {
                 String a = cursor.getString(cursor.getColumnIndex("doanhthu"));
-                Log.e("aaa","doanh thu " + a);
-                Log.e("aaa","Chuan bi parse");
                 list.add(Integer.parseInt(cursor.getString(cursor.getColumnIndex("doanhthu"))));
-                Log.e("aaa","khong loi");
             }catch (Exception e){
-                Log.e("aaa","Loi loi");
                 list.add(0);
             }
         }

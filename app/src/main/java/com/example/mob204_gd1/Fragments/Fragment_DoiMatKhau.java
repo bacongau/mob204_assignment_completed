@@ -90,6 +90,7 @@ public class    Fragment_DoiMatKhau extends Fragment {
             }
             if (mkMoi.equals(mkMoi2) == false){
                 Toast.makeText(getContext(), "Mật khẩu không trùng khớp", Toast.LENGTH_SHORT).show();
+                check = -1;
             }
         }
         return check;

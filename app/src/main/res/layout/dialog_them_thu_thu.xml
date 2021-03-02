@@ -36,6 +36,7 @@
             android:id="@+id/edt_dialogThemTT_maTT"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="text"
             android:hint="Nhập tên đăng nhập" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -54,6 +55,7 @@
             android:id="@+id/edt_dialog_tenThuThu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="text"
             android:hint="Nhập họ tên" />
     </com.google.android.material.textfield.TextInputLayout>
 
