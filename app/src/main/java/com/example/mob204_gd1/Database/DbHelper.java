@@ -9,7 +9,7 @@ import androidx.annotation.Nullable;
 public class DbHelper extends SQLiteOpenHelper {
 
     static final String dbName = "PNLib";
-    static final int dbVersion = 2;
+    static final int dbVersion = 3;
 
     public DbHelper(@Nullable Context context) {
         super(context, dbName, null, dbVersion);
@@ -42,15 +42,15 @@ public class DbHelper extends SQLiteOpenHelper {
                 "maSach INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "tenSach TEXT NOT NULL, " +
                 "giaThue INTEGER NOT NULL, " +
-                "maLoai INTEGER REFERENCES LoaiSach(maLoai))";
+                "maLoai INTEGER REFERENCES LoaiSach(maLoai) ON DELETE CASCADE)";
         db.execSQL(createTableSach);
 
         // Tao bang Phieu Muon
         String createTablePhieuMuon = "CREATE TABLE PhieuMuon(" +
                 "maPhieuMuon INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                "maThuThu TEXT REFERENCES ThuThu(maThuThu), " +
-                "maThanhVien INTEGER REFERENCES ThanhVien(maThanhVien), " +
-                "maSach INTEGER REFERENCES Sach(maSach), " +
+                "maThuThu TEXT REFERENCES ThuThu(maThuThu) ON DELETE CASCADE, " +
+                "maThanhVien INTEGER REFERENCES ThanhVien(maThanhVien) ON DELETE CASCADE, " +
+                "maSach INTEGER REFERENCES Sach(maSach) ON DELETE CASCADE, " +
                 "tienThue INTEGER NOT NULL, " +
                 "ngay DATE NOT NULL, " +
                 "traSach INTEGER NOT NULL)";
@@ -71,5 +71,11 @@ public class DbHelper extends SQLiteOpenHelper {
         db.execSQL(dropTablePhieuMuon);
 
         onCreate(db);
+    }
+
+    @Override
+    public void onOpen(SQLiteDatabase db) {
+        super.onOpen(db);
+        db.execSQL("PRAGMA foreign_keys=ON");
     }
 }
